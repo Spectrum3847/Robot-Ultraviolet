@@ -9,6 +9,7 @@ import subsystems.*;
  * CommandBase stores creates and stores each control system. To access a
  * subsystem elsewhere in your code in your code use CommandBase.exampleSubsystem
  * @author Author 
+ * #git test
  */
 public abstract class CommandBase extends Command {
 
