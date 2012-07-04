@@ -13,16 +13,11 @@ import edu.wpi.first.wpilibj.command.Scheduler;
  */
 public class Disabled {
     
-    public void robotInit(){
-        
-    }
-    
     public static void init(){
         Init.cancelAllCommands();
         Init.stopGyroDrift.start();
         CommandBase.pneumatics.stopCompressor();        
         CommandBase.drivebase.reset(); 
-        Init.stopGyroDrift.start();
     }
     
 

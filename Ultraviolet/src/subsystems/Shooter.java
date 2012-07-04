@@ -28,7 +28,7 @@ public class Shooter extends Subsystem {
         super("Shooter");
         
         //assign optical encoder to Digital IO port 14
-        shooter_encoder = new driver.Encoder(14);
+        shooter_encoder = new driver.Encoder(HW.SHOOTER_ENCODER);
         
         front_motor = new Jaguar(HW.FRONT_SHOOTER_MOTOR);
         back_motor =  new Jaguar(HW.REAR_SHOOTER_MOTOR);

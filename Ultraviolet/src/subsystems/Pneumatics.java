@@ -29,7 +29,7 @@ public class Pneumatics extends Subsystem {
     
     public Pneumatics(){
         compressor = new Compressor(HW.PRESSURE_CHANNEl,HW.COMPRESSOR_RELAY);
-        jacks = new Solenoid(1);
+        jacks = new Solenoid(HW.RAINBOW);
     }
     
     public boolean isMaxPSI(){
