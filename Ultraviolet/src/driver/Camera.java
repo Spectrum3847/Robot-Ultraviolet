@@ -62,11 +62,12 @@ public class Camera {
     
     public static int[] receiveData()
     {
-        return parseCamData(tokenizeNewLine(safeChar(receiveRaw())));
+        return parseCamData(receiveRaw());
     }
     
     public static String[] tokenizeNewLine(String str)
     {
+
         if(str != null)
         {
             StringTokenizer tokened = new StringTokenizer(str, "\n");
@@ -82,6 +83,23 @@ public class Camera {
         return null;
     }
     
+    private static int[] parseCamData(String input)
+    {
+        if(input != null)
+        {
+            int farray[] = new int[8];
+            farray[0] = Integer.parseInt(String.valueOf(input.toCharArray(), 0, 3));
+            farray[0] = Integer.parseInt(String.valueOf(input.toCharArray(), 3, 3));
+            farray[0] = Integer.parseInt(String.valueOf(input.toCharArray(), 6, 3));
+            farray[0] = Integer.parseInt(String.valueOf(input.toCharArray(), 9, 3));
+            farray[0] = Integer.parseInt(String.valueOf(input.toCharArray(), 12, 3));
+            farray[0] = Integer.parseInt(String.valueOf(input.toCharArray(), 15, 3));
+            farray[0] = Integer.parseInt(String.valueOf(input.toCharArray(), 18, 3));
+            farray[0] = Integer.parseInt(String.valueOf(input.toCharArray(), 21, 3));
+            return farray;
+        }
+        return null;
+    }    
     private static int[] parseCamData(String[] sarray)
     {
   
