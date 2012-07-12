@@ -15,9 +15,10 @@ public abstract class CommandBase extends Command {
 
     public static OI oi;
     public static DriveBase drivebase = new DriveBase();
-    public static Elevator elevator = new Elevator();
+    public static Magazine magazine = new Magazine();
     public static Shooter shooter = new Shooter();
-    public static Collector collector = new Collector();
+    public static Loader loader = new Loader();
+    public static Chamber chamber = new Chamber();
     public static Pneumatics pneumatics = new Pneumatics();
    //public static Camera cam = new Camera("10.38.47.33","8882");
     // Create a single static instance of all of your subsystems

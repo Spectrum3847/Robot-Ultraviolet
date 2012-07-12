@@ -25,8 +25,9 @@ public class ManualUp extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-            CommandBase.collector.setSpeed(-1);
-            CommandBase.elevator.setSpeed(1);
+            CommandBase.loader.setSpeed(-1);
+            CommandBase.magazine.setSpeed(1);
+            CommandBase.chamber.setSpeed(1);
 
 
     }
@@ -38,8 +39,9 @@ public class ManualUp extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        collector.setSpeed(0);
-        elevator.setSpeed(0);
+        loader.setSpeed(0);
+        magazine.setSpeed(0);
+        chamber.setSpeed(0);
     }
 
     // Called when another command which requires one or more of the same

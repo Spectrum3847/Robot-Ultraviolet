@@ -19,8 +19,9 @@ public class HW {
     /**NON-DRIVEBASE MOTOR ASSIGNMENTS (PWM)**/
     public static final int FRONT_SHOOTER_MOTOR = 1;
     public static final int REAR_SHOOTER_MOTOR = 2;
-    public static final int COLLECTOR_MOTOR = 3;
-    public static final int ELEVATOR_MOTOR = 4;
+    public static final int LOADER_MOTOR = 3;
+    public static final int MAGAZINE_MOTOR = 4;
+    public static final int CHAMBER_MOTOR = 9;
     
     //Digital Input
     public static final int PRESSURE_CHANNEl = 7;
@@ -79,10 +80,10 @@ public class HW {
     public static final int LOWER_LIMIT_SWITCH = 9;
     
     /**ANALOG SENSOR ALLOCATIONS - MISC. **/
-    public static final int COLLECTOR_IRSENSOR = 2;
-    public static final int BOT_ELEVATOR_IRSENSOR =3;
-    public static final int TOP_ELEVATOR_IRSENSOR = 4;
-    public static final int POTENTIOMETER_SENSOR = 5;
+    public static final int LOADER_IRSENSOR = 2;
+    public static final int LOWER_MAGAZINE_IRSENSOR =3;
+    public static final int CHAMBER_IRSENSOR = 4;
+    public static final int UPPER_MAGAZINE_IRSENSOR = 5;
     public static final int X_GYRO_CHANNEL = 1;
     
     /**RELAY ALLOCATIONS**/

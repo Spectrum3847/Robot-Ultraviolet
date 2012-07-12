@@ -10,29 +10,29 @@ import framework.HW;
  *
  * @author Hunter
 **/
-public class Elevator extends Subsystem {
+public class Magazine extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-    private Jaguar elevator_motor;
+    private Jaguar magazine_motor;
     private IRSensor lower_ir_sensor;
     private IRSensor upper_ir_sensor;
     
     public static int BOTTOM_SENSOR = 0;
     public static int TOP_SENSOR = 1;
     
-    public Elevator(){
-        elevator_motor= new Jaguar(HW.ELEVATOR_MOTOR);
-        lower_ir_sensor = new IRSensor(HW.BOT_ELEVATOR_IRSENSOR);
-        upper_ir_sensor = new IRSensor(HW.TOP_ELEVATOR_IRSENSOR);
+    public Magazine(){
+        magazine_motor= new Jaguar(HW.MAGAZINE_MOTOR);
+        lower_ir_sensor = new IRSensor(HW.LOWER_MAGAZINE_IRSENSOR);
+        upper_ir_sensor = new IRSensor(HW.UPPER_MAGAZINE_IRSENSOR);
     }
     public void initDefaultCommand() {
     }
     public void setSpeed(double speed){
-            elevator_motor.set(speed);
+            magazine_motor.set(speed);
     }
 
     public Jaguar getMotor(){
-        return elevator_motor;
+        return magazine_motor;
     }
     public IRSensor getTopIRSensor(){
         return upper_ir_sensor;

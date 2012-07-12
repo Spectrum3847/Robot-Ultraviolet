@@ -5,16 +5,16 @@ import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import framework.HW;
 
-public class Collector extends Subsystem {
+public class Loader extends Subsystem {
     //the new official ball count class XD
-    private Jaguar collector_motor;
+    private Jaguar loader_motor;
     protected IRSensor ir_sensor;
     
     private int count;
     
-    public Collector(){
-        ir_sensor = new IRSensor(HW.COLLECTOR_IRSENSOR);
-        collector_motor=new Jaguar(HW.COLLECTOR_MOTOR); 
+    public Loader(){
+        ir_sensor = new IRSensor(HW.LOADER_IRSENSOR);
+        loader_motor=new Jaguar(HW.LOADER_MOTOR); 
         count = 0;
     }
     
@@ -22,11 +22,11 @@ public class Collector extends Subsystem {
     }
     
     public Jaguar getJaguar(){
-        return collector_motor;
+        return loader_motor;
     }
     
     public void setSpeed(double speed){   
-            collector_motor.set(speed);
+            loader_motor.set(speed);
     }
     
     public IRSensor getIRSensor(){
@@ -38,7 +38,7 @@ public class Collector extends Subsystem {
 
 
     public void setCollectorMotor(double speed){
-        collector_motor.set(speed);
+        loader_motor.set(speed);
     }
     
     public int getBallCount(){
