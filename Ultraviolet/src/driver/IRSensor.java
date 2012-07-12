@@ -39,6 +39,6 @@ public class IRSensor extends AnalogChannel {
         if(Math.abs(distance) > 50)
             return 3847;
 
-        return (int)distance;
+        return distance;
     }
 }

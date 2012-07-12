@@ -1,3 +1,4 @@
+
 package framework;
 
 import edu.wpi.first.wpilibj.CANJaguar;
@@ -29,8 +30,7 @@ public class HW {
     /**
      * SOLENOID CHANNELS
      */
-    public static final int FORWARD_RAINBOW = 1;
-    public static final int REVERSE_RAINBOW = 2;
+    public static final int RAINBOW = 1;
     
  
     /**PID CONSTANTS**/
@@ -72,8 +72,7 @@ public class HW {
     public static final int LDRIVE_ENCODER_B = 4;
     
     /**DIGITAL SENSOR ALLOCATIONS - SHOOTER SYSTEM **/
-    public static final int SHOOTER_ENCODER_A = 5;
-    public static final int SHOOTER_ENCODER_B = 6;
+    public static final int SHOOTER_ENCODER = 14;
     
     /**DIGITAL SENSOR ALLOCATIONS - HOOD SYSTEM **/
     public static final int UPPER_LIMIT_SWITCH = 8;
