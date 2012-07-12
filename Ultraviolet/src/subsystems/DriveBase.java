@@ -193,13 +193,13 @@ public class DriveBase extends PIDSubsystem {
     
     private void setJaguars(){
         jag_arr = new Jaguar[4];
-        jag_1 = new Jaguar(7); //REAR LDRIVE 2
+        jag_1 = new Jaguar(7); //Front Left
         jag_arr[0] = jag_1;
-        jag_2 = new Jaguar(8); //REAR RDRIVE 1
+        jag_2 = new Jaguar(8); //Rear Left
         jag_arr[1] = jag_2;
-        jag_3 = new Jaguar(6); //FRONT LDRIVE 3
+        jag_3 = new Jaguar(6); //Front Right
         jag_arr[2] = jag_3;
-        jag_4 = new Jaguar(5); //FRONT RDRIVE 6
+        jag_4 = new Jaguar(5); //Rear Right
         jag_arr[3] = jag_4;
     }
     

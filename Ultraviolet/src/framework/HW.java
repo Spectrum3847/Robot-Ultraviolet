@@ -28,8 +28,7 @@ public class HW {
     /**
      * SOLENOID CHANNELS
      */
-    public static final int FORWARD_RAINBOW = 1;
-    public static final int REVERSE_RAINBOW = 2;
+    public static final int RAINBOW = 1;
     
  
     /**PID CONSTANTS**/
@@ -71,28 +70,18 @@ public class HW {
     public static final int LDRIVE_ENCODER_B = 4;
     
     /**DIGITAL SENSOR ALLOCATIONS - SHOOTER SYSTEM **/
-    public static final int SHOOTER_ENCODER_A = 5;
-    public static final int SHOOTER_ENCODER_B = 6;
-    
-    /**DIGITAL SENSOR ALLOCATIONS - HOOD SYSTEM **/
-    public static final int UPPER_LIMIT_SWITCH = 8;
-    public static final int LOWER_LIMIT_SWITCH = 9;
+    //public static final int SHOOTER_ENCODER_A = 5;
+    //public static final int SHOOTER_ENCODER_B = 6;
+    public static final int SHOOTER_ENCODER = 14;
     
     /**ANALOG SENSOR ALLOCATIONS - MISC. **/
     public static final int COLLECTOR_IRSENSOR = 2;
     public static final int BOT_ELEVATOR_IRSENSOR =3;
     public static final int TOP_ELEVATOR_IRSENSOR = 4;
-    public static final int POTENTIOMETER_SENSOR = 5;
     public static final int X_GYRO_CHANNEL = 1;
     
     /**RELAY ALLOCATIONS**/
     public static final int COMPRESSOR_RELAY = 1;
-    public static final int BRIDGE_RELAY = 2;
-    public static final int RELAY_ON = 3;
-    public static final int RELAY_OFF = 4;
-    
-
-    
     
     /**JOYSTICKS/GAMEPAD ASSIGNMENTS**/
     public static final int usbPort_one = 1;

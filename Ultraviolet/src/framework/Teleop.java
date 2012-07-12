@@ -16,8 +16,7 @@ public class Teleop {
         CommandBase.collector.setSpeed(0.0);
         Init.manualTankDrive.start();      
         Init.runCompressor.start();
-        Init.stopGyroDrift.start();
-        
+        Init.stopGyroDrift.start();   
     }
     
     

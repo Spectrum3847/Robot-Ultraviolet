@@ -4,9 +4,7 @@
  */
 package subsystems;
 
-import commands.CommandBase;
 import edu.wpi.first.wpilibj.Compressor;
-import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -29,7 +27,7 @@ public class Pneumatics extends Subsystem {
     
     public Pneumatics(){
         compressor = new Compressor(HW.PRESSURE_CHANNEl,HW.COMPRESSOR_RELAY);
-        jacks = new Solenoid(1);
+        jacks = new Solenoid(HW.RAINBOW);
     }
     
     public boolean isMaxPSI(){
