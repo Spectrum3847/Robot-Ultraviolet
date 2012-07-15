@@ -23,8 +23,8 @@ public class Init {
     public static final ManualHaloDrive haloDrive = new ManualHaloDrive();
     public static final PIDHaloDrive pidHaloDrive = new PIDHaloDrive();
     public static final ManualTankDrive manualTankDrive = new ManualTankDrive();
-    public static final LeftElectronicBrake leftBrake = new LeftElectronicBrake(HW.EBRAKE_KP,HW.EBRAKE_KI,HW.DRIVEBASE_KD);
-    public static final RightElectronicBrake rightBrake = new RightElectronicBrake(HW.EBRAKE_KP,HW.EBRAKE_KI,HW.DRIVEBASE_KD);
+    public static final LeftElectronicBrake leftBrake = new LeftElectronicBrake(HW.EBRAKE_KP,HW.EBRAKE_KI,HW.EBRAKE_KD);
+    public static final RightElectronicBrake rightBrake = new RightElectronicBrake(HW.EBRAKE_KP,HW.EBRAKE_KI,HW.EBRAKE_KD);
     public static final EBrake eBrake = new EBrake();
     public static final QuickTurn quickLeft90 = new QuickTurn(-90);
     public static final QuickTurn quickRight90 = new QuickTurn (90);

@@ -38,11 +38,15 @@ public class HW {
     /**DRIVEBASE PID**/
     public static final double EBRAKE_KP = 10;
     public static final double EBRAKE_KI = 0.0;
-    public static final double DRIVEBASE_KD = 3;
-    public static final double DRIVEBASE_PULSE = (1.0 / 1080.0);
+    public static final double EBRAKE_KD = 3;
+    public static final double EBRAKE_MOVE_KP = 5;
+    public static final double EBRAKE_MOVE_KI = 0.0;
+    public static final double EBRAKE_MOVE_KD = 1;    
+    public static final double DRIVEBASE_PULSE = (1.0 / 1080.0);    //36:12 GEAR RATIO, measured in REV PER SEC.
     public static final double EBRAKE_SETPOINT = 0.0;
     public static final double EBRAKE_INCREMENT = 2;
-    //36:12 GEAR RATIO, measured in REV PER SEC.
+    public static final double EBRAKE_TOLERANCE = 1;
+
 
     /**SHOOTER PID**/
     public static final double SHOOTER_KP = 5.055E-6;//5.225E-6;

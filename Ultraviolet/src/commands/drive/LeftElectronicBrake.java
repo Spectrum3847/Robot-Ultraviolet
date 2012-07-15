@@ -7,6 +7,7 @@ package commands.drive;
 import commands.CommandBase;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.PIDCommand;
+import framework.HW;
 
 /**
  *
@@ -18,10 +19,10 @@ public class LeftElectronicBrake extends PIDCommand {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         super(Kp,Ki,Kd);
-        this.getPIDController().setSetpoint(0.0);
-        
+        this.getPIDController().setSetpoint(HW.EBRAKE_SETPOINT);
+        this.getPIDController().setTolerance(HW.EBRAKE_TOLERANCE);
+        this.getPIDController().setInputRange(-10, 10);
         //this.getPIDController().setOutputRange(-0.3, 0.3);
-        
     }
     
     public double returnPIDInput(){
@@ -34,12 +35,35 @@ public class LeftElectronicBrake extends PIDCommand {
     }
     
     /**
+     * Reset the Encoder
+     */
+    public void resetEncoder(){
+        CommandBase.drivebase.getLeftEncoder().reset(); //Reset the encoder to 0
+    }
+    
+    /**
+     * Start the Encoder
+     */
+    public void startEncoder(){
+        CommandBase.drivebase.getLeftEncoder().start();
+    }
+    
+    /**
      * Increment the Setpoint of the eBrake
      * Allows you to move forward and backwards while brake is enabled
      * @param increment The amount you want to move the setpoint in inches (+ fwd, - rev)
      */
     public void incrementSetpoint(double increment){
-        getPIDController().setSetpoint(increment + getPIDController().getSetpoint());
+        getController().setPID(HW.EBRAKE_MOVE_KP, HW.EBRAKE_MOVE_KI, HW.EBRAKE_MOVE_KD);
+        getController().setSetpoint(increment + getPIDController().getSetpoint());
+    }
+    
+    public void resetBrake(){        
+        getController().reset(); //Reset controller
+        resetEncoder();
+        getController().setPID(HW.EBRAKE_KP, HW.EBRAKE_KI, HW.EBRAKE_KD); //Reset PID constants to brake
+        getController().setSetpoint(HW.EBRAKE_SETPOINT); //Reset the setPoint to 0
+        getController().enable(); //Re-enable the control to brake again
     }
     
     public PIDController getController(){
@@ -48,15 +72,17 @@ public class LeftElectronicBrake extends PIDCommand {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        CommandBase.drivebase.getLeftEncoder().reset();
-        CommandBase.drivebase.getLeftEncoder().start();
-        this.getPIDController().reset();
-        this.getPIDController().enable();
+        resetEncoder();
+        startEncoder();
+        getController().reset();
+        getController().enable();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-       
+        if (getController().onTarget() && getController().getSetpoint() != 0){
+            resetBrake();
+        }
     }
 
     // Make this return true when this Command no longer needs to run execute()
