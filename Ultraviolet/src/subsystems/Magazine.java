@@ -45,7 +45,7 @@ public class Magazine extends Subsystem {
         if(sensor == 0)
             return lower_ir_sensor.getDistance() <= 15;
         else if(sensor == 1)
-            return upper_ir_sensor.getDistance() <= 10;
+            return upper_ir_sensor.getDistance() <= 5;
         else return false;
     }
 }

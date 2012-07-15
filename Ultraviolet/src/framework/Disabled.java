@@ -5,6 +5,7 @@
 package framework;
 
 import commands.CommandBase;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
@@ -25,6 +26,7 @@ public class Disabled {
     public static void periodic(){
         Scheduler.getInstance().run();
         SpectrumDashboard.updateDashboard();
+        //Timer.delay(50);
     }
     
     public static void continuous(){

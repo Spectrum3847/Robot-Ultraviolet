@@ -25,6 +25,9 @@ public class OI {
     public static final Button manualCollect_but = new JoystickButton(driveStick_left, 1);               //While Held
     public static final Button eBrakeFWD_but = new JoystickButton(driveStick_left, 6); //When Pressed
     public static final Button eBrakeREV_but = new JoystickButton(driveStick_left, 7); //When Pressed
+    public static final Button firstCollect_but = new JoystickButton(driveStick_left,4);
+    public static final Button secondCollect_but = new JoystickButton(driveStick_left,3);
+    public static final Button thirdCollect_but = new JoystickButton(driveStick_left,5);
     
     //Right Joysctick
     public static final Button manualEject_but = new JoystickButton(driveStick_right, 1);               //While Held
@@ -50,6 +53,11 @@ public class OI {
         manualEject_but.whileHeld(Init.manualEject);
         manualEject_panel_but.whileHeld(Init.manualEject);
         manualCollect_panel_but.whileHeld(Init.manualCollect);
+        
+        //Auto Collect
+        firstCollect_but.whenPressed(Init.firstCollect);
+        secondCollect_but.whenPressed(Init.secondCollect);
+        thirdCollect_but.whenPressed(Init.thirdCollect);
 
         //Quick Turns
         quickLeftTurn_but.whenPressed(new QuickTurn(-90));

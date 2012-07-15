@@ -4,10 +4,6 @@
 package commands.collector;
 
 import commands.CommandBase;
-import commands.CommandBase;
-import driver.Gamepad;
-import framework.HW;
-import framework.OI;
 
 /**
  *
@@ -43,7 +39,6 @@ public class ManualDown extends CommandBase {
         magazine.setSpeed(0);
         loader.setSpeed(0);
         chamber.setSpeed(0);
-        CommandBase.loader.setBallCount(0);
     }
 
     // Called when another command which requires one or more of the same

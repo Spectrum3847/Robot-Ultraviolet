@@ -1,5 +1,6 @@
 package commands;
 
+import driver.Camera;
 import edu.wpi.first.wpilibj.command.Command;
 import framework.OI;
 import subsystems.*;
@@ -20,7 +21,7 @@ public abstract class CommandBase extends Command {
     public static Loader loader = new Loader();
     public static Chamber chamber = new Chamber();
     public static Pneumatics pneumatics = new Pneumatics();
-   //public static Camera cam = new Camera("10.38.47.33","8882");
+    //public static Camera cam = new Camera("10.38.47.33","8882");
     // Create a single static instance of all of your subsystems
 
 

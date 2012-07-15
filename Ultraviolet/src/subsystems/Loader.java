@@ -45,13 +45,20 @@ public class Loader extends Subsystem {
         return count;
     }
     
-    public void setBallCount(int balls){
-        if(balls < 0) count = 0;
-        else count = balls;
+    public void addBall(){
+        count+= 1;
+    }
+    
+    public void subtractBall(){
+        count-=1;
+    }
+    
+    public void clearBalls(){
+        count = 0;
     }
     
     public boolean isOccupied(){
-        return ir_sensor.getDistance() <= 13;
+        return ir_sensor.getDistance() <= 11;
     }
   
 }

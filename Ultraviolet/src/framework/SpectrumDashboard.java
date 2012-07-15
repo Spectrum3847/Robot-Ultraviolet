@@ -42,6 +42,7 @@ public class SpectrumDashboard {
 
             if ((Timer.getFPGATimestamp() - shortOldTime) > SHORT_DELAY) {
                 //All Dashboard commands that should be updated after the quick SHORT_DELAY
+                SmartDashboard.putDouble("Ball Count",CommandBase.loader.getBallCount());
                 SmartDashboard.putDouble("RPM DIAL", OI.panel.getRPMAxis());
                 SmartDashboard.putDouble("Turn Controller Angle", CommandBase.drivebase.getAngle());
                 SmartDashboard.putBoolean("TurnControllerEnable", CommandBase.drivebase.isControllerEnanbled());
@@ -50,6 +51,10 @@ public class SpectrumDashboard {
                 SmartDashboard.putDouble("RightDrive", CommandBase.drivebase.getJaguar(3).get());
                 SmartDashboard.putBoolean("FULL PRESSURE", CommandBase.pneumatics.isMaxPSI());
                 SmartDashboard.putBoolean("Dial Sp. Ctrl.",Init.panel_speedControl.isRunning());
+                SmartDashboard.putDouble("Loader Sensor",CommandBase.loader.getIRSensor().getDistance());
+                SmartDashboard.putDouble("Lower Magazine Sensor",CommandBase.magazine.getBottomIRSensor().getDistance());
+                SmartDashboard.putDouble("Upper Magazine Sensor",CommandBase.magazine.getTopIRSensor().getDistance());
+                SmartDashboard.putDouble("Chamber Sensor",CommandBase.chamber.getSensor().getDistance());
 
                 shortOldTime = Timer.getFPGATimestamp();
             }

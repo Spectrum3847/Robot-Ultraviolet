@@ -33,6 +33,9 @@ public class Init {
     //Collect Commands
     public static final Command manualCollect = new ManualUp();
     public static final Command manualEject = new ManualDown();
+    public static final Command firstCollect = new FirstCollect();
+    public static final Command secondCollect = new SecondCollect();
+    public static final Command thirdCollect = new ThirdCollect();
     
     //Shooter Commands
     public static final Command panel_speedControl = new PanelControl();
