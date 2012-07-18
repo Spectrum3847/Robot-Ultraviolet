@@ -2,12 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package commands.collector;
+package commands.collector.commandgroups;
 
 import commands.CommandBase;
-import commands.collector.first.MoveToChamber;
-import commands.collector.first.MoveToLoader;
-import commands.collector.first.MoveToMagazine;
+import commands.collector.MoveToChamber;
+import commands.collector.MoveToLoader;
+import commands.collector.MoveToMagazine;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**

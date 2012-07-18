@@ -5,8 +5,6 @@
 package commands.collector;
 
 import commands.CommandBase;
-import commands.collector.third.MoveToLoader;
-import commands.collector.third.MoveToMagazine;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
