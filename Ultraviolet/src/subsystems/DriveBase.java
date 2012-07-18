@@ -4,6 +4,7 @@
  */
 package subsystems;
 
+import commands.CommandBase;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableGyro;
@@ -32,6 +33,10 @@ public class DriveBase extends PIDSubsystem {
      private double turnControllerOut = 0;
      private double tolerance = 1; //Percentage of error that the turn controller can be off and still be onTarget()
 
+     //Used for leftVelocity
+    public static double leftVelocity = 0;
+    private static double leftOldDistance = 0;
+    private static double leftOldTime = 0;
     
      public DriveBase(){
          super(kP,HW.SKEW_KI,HW.SKEW_KD);
@@ -157,7 +162,7 @@ public class DriveBase extends PIDSubsystem {
     }
     
     public void setLeft(double left_speed){
-        robotDrive.tankDrive(left_speed, jag_3.get());
+        robotDrive.tankDrive(-left_speed, jag_3.get());
             //jag_1.set(left_speed);
             //jag_2.set(left_speed);
     }
@@ -166,6 +171,29 @@ public class DriveBase extends PIDSubsystem {
         robotDrive.tankDrive(jag_1.get(), right_speed);
            // jag_3.set(-1*right_speed);
             //jag_4.set(-1*right_speed);
+    }
+    
+    public double getLeft(){
+        return -1 * jag_1.get();
+    }
+    
+    public double getRight(){
+        return jag_3.get();
+    }
+    
+    public double getLeftVelocity(){
+        if (leftOldTime > 0){
+            double newTime = Timer.getFPGATimestamp();
+            double newDistance = getLeftEncoder().getDistance();
+            leftVelocity =  (newDistance - leftOldDistance)/(newTime - leftOldTime);
+            leftOldDistance = newDistance;
+            leftOldTime = newTime;
+            return leftVelocity;
+        } else{
+            leftOldDistance = getLeftEncoder().getDistance();
+            leftOldTime = Timer.getFPGATimestamp();
+            return 0;
+        }
     }
     
     public void setArcade(double straight_speed, double turn_speed){

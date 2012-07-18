@@ -23,11 +23,11 @@ public class OI {
     
     //Left Joystick
     public static final Button manualCollect_but = new JoystickButton(driveStick_left, 1);               //While Held
-    public static final Button eBrakeFWD_but = new JoystickButton(driveStick_left, 6); //When Pressed
-    public static final Button eBrakeREV_but = new JoystickButton(driveStick_left, 7); //When Pressed
     public static final Button firstCollect_but = new JoystickButton(driveStick_left,4);
     public static final Button secondCollect_but = new JoystickButton(driveStick_left,3);
     public static final Button thirdCollect_but = new JoystickButton(driveStick_left,5);
+    public static final Button eBrakeFWD_but = new JoystickButton(driveStick_left, 6); //When Pressed
+    public static final Button eBrakeREV_but = new JoystickButton(driveStick_left, 7); //When Pressed
     
     //Right Joysctick
     public static final Button manualEject_but = new JoystickButton(driveStick_right, 1);               //While Held
@@ -131,7 +131,7 @@ public class OI {
         //    }
         
         //EBrake Toggle
-        eBrake_but.toggleWhenPressed(Init.eBrake); //Toggle eBrake_but on button press
+        eBrake_but.toggleWhenPressed(Init.leftVelocity); //Toggle eBrake_but on button press
         //Toggle for Jacks/Rainbow
         jacks_but.toggleWhenPressed(Init.deployJacks);
         //Toggle Compressor

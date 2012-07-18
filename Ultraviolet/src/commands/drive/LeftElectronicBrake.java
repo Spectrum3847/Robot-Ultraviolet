@@ -7,6 +7,7 @@ package commands.drive;
 import commands.CommandBase;
 import edu.wpi.first.wpilibj.PIDController;
 import edu.wpi.first.wpilibj.command.PIDCommand;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import framework.HW;
 
 /**
@@ -54,7 +55,7 @@ public class LeftElectronicBrake extends PIDCommand {
      * @param increment The amount you want to move the setpoint in inches (+ fwd, - rev)
      */
     public void incrementSetpoint(double increment){
-        getController().setPID(HW.EBRAKE_MOVE_KP, HW.EBRAKE_MOVE_KI, HW.EBRAKE_MOVE_KD);
+        //getController().setPID(HW.EBRAKE_MOVE_KP, HW.EBRAKE_MOVE_KI, HW.EBRAKE_MOVE_KD);
         getController().setSetpoint(increment + getPIDController().getSetpoint());
     }
     
@@ -81,7 +82,7 @@ public class LeftElectronicBrake extends PIDCommand {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if (getController().onTarget() && getController().getSetpoint() != 0){
-            resetBrake();
+            //resetBrake();
         }
     }
 

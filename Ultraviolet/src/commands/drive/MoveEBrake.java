@@ -24,7 +24,7 @@ public class MoveEBrake extends CommandBase {
     protected void initialize() {
          if (Init.eBrake.isRunning()){
             Init.leftBrake.incrementSetpoint(increment);
-            Init.rightBrake.incrementSetpoint(increment);
+            //Init.rightBrake.incrementSetpoint(increment);
         } else{
              System.out.println("eBrake not enabled, can't increment");
         }
@@ -36,7 +36,7 @@ public class MoveEBrake extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

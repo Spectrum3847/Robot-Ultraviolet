@@ -18,13 +18,20 @@ public class Teleop {
         Init.manualTankDrive.start();      
         Init.runCompressor.start();
         Init.stopGyroDrift.start();
+        CommandBase.drivebase.getLeftEncoder().start();
         
     }
     
-    
+    static int i = 0;
     public static void periodic(){
         SpectrumDashboard.updateDashboard();
         Scheduler.getInstance().run();
+        
+        if (i > 50){
+            System.out.println("LeftVelocity = " + CommandBase.drivebase.getLeftVelocity());
+            i = 0;
+        }
+        i++;
     }
     
     

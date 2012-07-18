@@ -39,10 +39,10 @@ public class HW {
     public static final double EBRAKE_KP = 10;
     public static final double EBRAKE_KI = 0.0;
     public static final double EBRAKE_KD = 3;
-    public static final double EBRAKE_MOVE_KP = 5;
+    public static final double EBRAKE_MOVE_KP = 1;
     public static final double EBRAKE_MOVE_KI = 0.0;
-    public static final double EBRAKE_MOVE_KD = 1;    
-    public static final double DRIVEBASE_PULSE = (1.0 / 1080.0);    //36:12 GEAR RATIO, measured in REV PER SEC.
+    public static final double EBRAKE_MOVE_KD = .5;    
+    public static final double DRIVEBASE_PULSE = ((8 * Math.PI) / 1080.0);    //360 count encoder, 36:12 GEAR RATIO, 8" wheels measured in inch per tick.
     public static final double EBRAKE_SETPOINT = 0.0;
     public static final double EBRAKE_INCREMENT = 2;
     public static final double EBRAKE_TOLERANCE = 1;
