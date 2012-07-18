@@ -51,11 +51,11 @@ public class SpectrumDashboard {
                 SmartDashboard.putDouble("RightDrive", CommandBase.drivebase.getJaguar(3).get());
                 SmartDashboard.putBoolean("FULL PRESSURE", CommandBase.pneumatics.isMaxPSI());
                 SmartDashboard.putBoolean("Dial Sp. Ctrl.",Init.panel_speedControl.isRunning());
-                SmartDashboard.putDouble("Loader Sensor",CommandBase.loader.getIRSensor().getDistance());
-                SmartDashboard.putDouble("Lower Magazine Sensor",CommandBase.magazine.getBottomIRSensor().getDistance());
-                SmartDashboard.putDouble("Upper Magazine Sensor",CommandBase.magazine.getTopIRSensor().getDistance());
-                SmartDashboard.putDouble("Chamber Sensor",CommandBase.chamber.getSensor().getDistance());
-
+                
+                SmartDashboard.putBoolean("FirstCollect Running",Init.firstCollect.isRunning());
+                SmartDashboard.putBoolean("SecondCollect Running",Init.secondCollect.isRunning());
+                SmartDashboard.putBoolean("ThirdCollect Running",Init.thirdCollect.isRunning());
+                
                 shortOldTime = Timer.getFPGATimestamp();
             }
 

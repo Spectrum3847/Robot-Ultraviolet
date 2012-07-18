@@ -19,13 +19,20 @@ public class FirstCollect extends CommandGroup {
     public FirstCollect() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        super();
+        requires(CommandBase.loader);
+        requires(CommandBase.magazine);
+        requires(CommandBase.chamber);
+       
         addSequential(new MoveToLoader());
         addSequential(new MoveToMagazine());
         addSequential(new MoveToChamber());
     }
     
+    
+    
     public void end(){
-        CommandBase.loader.addBall();
+       CommandBase.loader.addBall();
     }
     
     public void interrupted(){

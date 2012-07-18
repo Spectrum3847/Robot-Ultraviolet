@@ -23,8 +23,16 @@ public class Teleop {
     
     
     public static void periodic(){
+        
         SpectrumDashboard.updateDashboard();
+        
+        if(CommandBase.loader.getBallCount() < 0)
+            CommandBase.loader.clearBalls();
+        
+        
         Scheduler.getInstance().run();
+        
+        
     }
     
     

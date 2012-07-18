@@ -25,9 +25,8 @@ public class OI {
     public static final Button manualCollect_but = new JoystickButton(driveStick_left, 1);               //While Held
     public static final Button eBrakeFWD_but = new JoystickButton(driveStick_left, 6); //When Pressed
     public static final Button eBrakeREV_but = new JoystickButton(driveStick_left, 7); //When Pressed
-    public static final Button firstCollect_but = new JoystickButton(driveStick_left,4);
-    public static final Button secondCollect_but = new JoystickButton(driveStick_left,3);
-    public static final Button thirdCollect_but = new JoystickButton(driveStick_left,5);
+    public static final Button autoCollect_but = new JoystickButton(driveStick_left,3);
+    public static final Button cancelCollect_but = new JoystickButton(driveStick_left,2);
     
     //Right Joysctick
     public static final Button manualEject_but = new JoystickButton(driveStick_right, 1);               //While Held
@@ -41,6 +40,7 @@ public class OI {
     public static final Button compressor_but = new JoystickButton(driveStick_right, 11); //Toggle
 
     //Panel
+    public static final Button fire_but = new JoystickButton(panel.getPanel(),Panel.FIRE);
     public static final Button manualEject_panel_but = new JoystickButton(panel.getPanel(), Panel.DN);  //While Held
     public static final Button manualCollect_panel_but = new JoystickButton(panel.getPanel(), Panel.UP); //While Held 
     public static final Button speedControl_panel_but = new JoystickButton(panel.getPanel(),Panel.O);  //While Held
@@ -55,9 +55,8 @@ public class OI {
         manualCollect_panel_but.whileHeld(Init.manualCollect);
         
         //Auto Collect
-        firstCollect_but.whenPressed(Init.firstCollect);
-        secondCollect_but.whenPressed(Init.secondCollect);
-        thirdCollect_but.whenPressed(Init.thirdCollect);
+        autoCollect_but.whenPressed(Init.checkCollect);
+        cancelCollect_but.whenPressed(Init.cancelCollect);
 
         //Quick Turns
         quickLeftTurn_but.whenPressed(new QuickTurn(-90));
@@ -74,6 +73,7 @@ public class OI {
         
         //Shooter Control
         speedControl_panel_but.whileHeld(Init.panel_speedControl);
+        fire_but.whenPressed(Init.shootBall);
         
         /*
          * These next functions need the modified wpilibj Button.java
