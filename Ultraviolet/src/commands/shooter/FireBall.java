@@ -2,44 +2,24 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package commands.collector;
+package commands.shooter;
 
 import commands.CommandBase;
-import framework.Init;
 
 /**
  *
  * @author root
  */
-public class CheckCollectMode extends CommandBase {
+public class FireBall extends CommandBase {
     
-    public CheckCollectMode() {
+    public FireBall() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(CommandBase.loader);
-        requires(CommandBase.magazine);
-        requires(CommandBase.chamber);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        switch(CommandBase.loader.getBallCount()){
-            case 0: {
-                Init.firstCollect.start();
-                break;
-            }
-            case 1:{
-                Init.secondCollect.start();
-                break;   
-            }
-            case 2:{
-                Init.thirdCollect.start();
-                break;   
-            }
-            default: break;
-             
-        
-        }
+        CommandBase.chamber.setSpeed(1);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -48,11 +28,13 @@ public class CheckCollectMode extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return !CommandBase.chamber.isOccupied();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        CommandBase.chamber.setSpeed(0);
+        CommandBase.loader.subtractBall();
     }
 
     // Called when another command which requires one or more of the same

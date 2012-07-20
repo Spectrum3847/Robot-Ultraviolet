@@ -23,7 +23,7 @@ public class Panel {
     public static final int HUP = 4;
     public static final int HDN = 3;
     public static final int BM1 = 2;
-    public static final int FEN = 10;
+    public static final int SPD = 10;
     
     public static final int PANEL_PORT = 3;
     

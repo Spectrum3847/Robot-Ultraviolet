@@ -28,7 +28,6 @@ public class MoveToMagazine extends CommandBase {
     protected void execute() {
         if(!CommandBase.loader.isOccupied())
             CommandBase.loader.setSpeed(0);
-        
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -39,6 +38,7 @@ public class MoveToMagazine extends CommandBase {
     // Called once after isFinished returns true
     protected void end() {
         CommandBase.magazine.setSpeed(0);
+        CommandBase.loader.setSpeed(0);
     }
 
     // Called when another command which requires one or more of the same

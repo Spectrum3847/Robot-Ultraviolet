@@ -56,6 +56,7 @@ public class SpectrumDashboard {
                 SmartDashboard.putBoolean("SecondCollect Running",Init.secondCollect.isRunning());
                 SmartDashboard.putBoolean("ThirdCollect Running",Init.thirdCollect.isRunning());
                 
+                
                 shortOldTime = Timer.getFPGATimestamp();
             }
 

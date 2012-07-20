@@ -5,41 +5,25 @@
 package commands.collector;
 
 import commands.CommandBase;
-import framework.Init;
+import edu.wpi.first.wpilibj.Timer;
 
 /**
  *
  * @author root
  */
-public class CheckCollectMode extends CommandBase {
+public class ClearChamber extends CommandBase {
     
-    public CheckCollectMode() {
+    double last_time;
+    
+    public ClearChamber() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(CommandBase.loader);
-        requires(CommandBase.magazine);
-        requires(CommandBase.chamber);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        switch(CommandBase.loader.getBallCount()){
-            case 0: {
-                Init.firstCollect.start();
-                break;
-            }
-            case 1:{
-                Init.secondCollect.start();
-                break;   
-            }
-            case 2:{
-                Init.thirdCollect.start();
-                break;   
-            }
-            default: break;
-             
-        
-        }
+        last_time = Timer.getFPGATimestamp();
+        chamber.setSpeed(1);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -48,11 +32,12 @@ public class CheckCollectMode extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return Timer.getFPGATimestamp() - last_time >= 0.3;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+        chamber.setSpeed(0);
     }
 
     // Called when another command which requires one or more of the same

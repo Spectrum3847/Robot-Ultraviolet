@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package commands.collector;
+package commands.shooter;
 
+import commands.collector.*;
 import commands.CommandBase;
 import framework.Init;
 
@@ -11,9 +12,9 @@ import framework.Init;
  *
  * @author root
  */
-public class CheckCollectMode extends CommandBase {
+public class CheckFireMode extends CommandBase {
     
-    public CheckCollectMode() {
+    public CheckFireMode() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
         requires(CommandBase.loader);
@@ -24,16 +25,16 @@ public class CheckCollectMode extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
         switch(CommandBase.loader.getBallCount()){
-            case 0: {
-                Init.firstCollect.start();
+            case 1: {
+                Init.shootFirst.start();
                 break;
             }
-            case 1:{
-                Init.secondCollect.start();
+            case 2:{
+                Init.shootSecond.start();
                 break;   
             }
-            case 2:{
-                Init.thirdCollect.start();
+            case 3:{
+                Init.shootThird.start();
                 break;   
             }
             default: break;

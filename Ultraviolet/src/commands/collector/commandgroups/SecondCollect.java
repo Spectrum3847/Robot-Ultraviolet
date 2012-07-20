@@ -5,6 +5,7 @@
 package commands.collector.commandgroups;
 
 import commands.CommandBase;
+import commands.collector.MagazineSpacer;
 import commands.collector.MoveToLoader;
 import commands.collector.MoveToLowerMagazine;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -24,6 +25,7 @@ public class SecondCollect extends CommandGroup {
         
         addSequential(new MoveToLoader());
         addSequential(new MoveToLowerMagazine());
+        addSequential(new MagazineSpacer());
     }
     
     

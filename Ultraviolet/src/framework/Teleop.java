@@ -28,6 +28,8 @@ public class Teleop {
         
         if(CommandBase.loader.getBallCount() < 0)
             CommandBase.loader.clearBalls();
+        if(CommandBase.loader.getBallCount() == 4)
+            CommandBase.loader.subtractBall();
         
         
         Scheduler.getInstance().run();

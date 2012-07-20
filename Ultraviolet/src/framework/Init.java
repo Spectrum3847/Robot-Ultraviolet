@@ -4,19 +4,14 @@
  */
 package framework;
 
-import commands.CommandBase;
-import commands.DeployJacks;
-import commands.RunCompressor;
-import commands.StopGyroDrift;
+import commands.*;
 import commands.collector.CancelCollect;
 import commands.collector.CheckCollectMode;
 import commands.collector.ManualDown;
 import commands.collector.ManualUp;
-import commands.collector.commandgroups.FirstCollect;
-import commands.collector.commandgroups.SecondCollect;
-import commands.collector.commandgroups.ShootBall;
-import commands.collector.commandgroups.ThirdCollect;
+import commands.collector.commandgroups.*;
 import commands.drive.*;
+import commands.shooter.CheckFireMode;
 import commands.shooter.PanelControl;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -48,10 +43,15 @@ public class Init {
     public static final Command thirdCollect = new ThirdCollect();
     public static final Command checkCollect = new CheckCollectMode();
     public static final Command cancelCollect = new CancelCollect();
+    public static final Command addBall = new AddBall();
+    public static final Command subtractBall = new SubtractBall();
     
     //Shooter Commands
     public static final Command panel_speedControl = new PanelControl();
-    public static final Command shootBall = new ShootBall();
+    public static final Command shootBall = new CheckFireMode();
+    public static final Command shootThird = new ShootThird();
+    public static final Command shootSecond = new ShootSecond();
+    public static final Command shootFirst = new ShootFirst();
 
 
     
