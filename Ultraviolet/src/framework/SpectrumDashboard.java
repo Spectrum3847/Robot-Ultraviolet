@@ -5,9 +5,7 @@
 package framework;
 
 import commands.CommandBase;
-import driver.Panel;
 import edu.wpi.first.wpilibj.Timer;
-import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -17,7 +15,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class SpectrumDashboard {
 
     static final boolean ENABLE_SPECTRUM_DASHBOARD = true;
-    static final double SHORT_DELAY = .5;
+    static final double SHORT_DELAY = .2;
     static double shortOldTime = 0.0;
     static final double LONG_DELAY = 2;
     static double longOldTime = 0.0;
@@ -32,7 +30,7 @@ public class SpectrumDashboard {
             SmartDashboard.putBoolean("Jacks Down", CommandBase.pneumatics.isJacks());
         
             //Intialize Single calls here, useful for PID data
-            SmartDashboard.putData(CommandBase.drivebase);
+            //SmartDashboard.putData(CommandBase.drivebase);
         }
     }
 
@@ -44,11 +42,11 @@ public class SpectrumDashboard {
                 //All Dashboard commands that should be updated after the quick SHORT_DELAY
                 SmartDashboard.putDouble("Ball Count",CommandBase.loader.getBallCount());
                 SmartDashboard.putDouble("RPM DIAL", OI.panel.getRPMAxis());
-                SmartDashboard.putDouble("Turn Controller Angle", CommandBase.drivebase.getAngle());
-                SmartDashboard.putBoolean("TurnControllerEnable", CommandBase.drivebase.isControllerEnanbled());
-                SmartDashboard.putDouble("Turn PID Output", CommandBase.drivebase.getPIDTurnOutput());
-                SmartDashboard.putDouble("LeftDrive", CommandBase.drivebase.getJaguar(1).get());
-                SmartDashboard.putDouble("RightDrive", CommandBase.drivebase.getJaguar(3).get());
+                //SmartDashboard.putDouble("Turn Controller Angle", CommandBase.drivebase.getAngle());
+                //SmartDashboard.putBoolean("TurnControllerEnable", CommandBase.drivebase.isControllerEnanbled());
+                //SmartDashboard.putDouble("Turn PID Output", CommandBase.drivebase.getPIDTurnOutput());
+                //SmartDashboard.putDouble("LeftDrive", CommandBase.drivebase.getJaguar(1).get());
+                //SmartDashboard.putDouble("RightDrive", CommandBase.drivebase.getJaguar(3).get());
                 SmartDashboard.putBoolean("FULL PRESSURE", CommandBase.pneumatics.isMaxPSI());
                 SmartDashboard.putBoolean("Dial Sp. Ctrl.",Init.panel_speedControl.isRunning());
                 
@@ -56,13 +54,15 @@ public class SpectrumDashboard {
                 SmartDashboard.putBoolean("SecondCollect Running",Init.secondCollect.isRunning());
                 SmartDashboard.putBoolean("ThirdCollect Running",Init.thirdCollect.isRunning());
                 
+                SmartDashboard.putBoolean("At Speed",CommandBase.shooter.inRange());
+                
                 
                 shortOldTime = Timer.getFPGATimestamp();
             }
 
             if ((Timer.getFPGATimestamp() - longOldTime) > LONG_DELAY) {
                 //Thing that should be updated every LONG_DELAY
-                SmartDashboard.putData(Scheduler.getInstance());
+                //SmartDashboard.putData(Scheduler.getInstance());
                 longOldTime = Timer.getFPGATimestamp();
             }
         }

@@ -14,7 +14,7 @@ import framework.Init;
  */
 public class DriveSelector extends CommandBase {
     
-    private Command defaultDriveMode = Init.manualTankDrive;
+    private Command defaultDriveMode = Init.haloDrive;
     
     public DriveSelector() {
         // Use requires() here to declare subsystem dependencies

@@ -4,6 +4,7 @@ package subsystems;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import framework.HW;
+import framework.OI;
 
 /**
  *
@@ -69,5 +70,11 @@ public class Shooter extends Subsystem {
     
     public void resetEncoder(){
         shooter_encoder.reset();
+    }
+    
+    public boolean inRange(){
+        double range = (Math.abs(getRate()-OI.panel.getRPMAxis())/getRate());
+        
+        return range < 5.0;
     }
 }
