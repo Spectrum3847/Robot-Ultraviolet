@@ -27,6 +27,9 @@ public class OI {
     public static final Button eBrakeREV_but = new JoystickButton(driveStick_left, 7); //When Pressed
     public static final Button autoCollect_but = new JoystickButton(driveStick_left,3);
     public static final Button cancelCollect_but = new JoystickButton(driveStick_left,2);
+    public static final Button cancelFirstCollect_but = new JoystickButton(driveStick_left,2);
+    public static final Button cancelSecondCollect_but = new JoystickButton(driveStick_left,2);
+    public static final Button cancelThirdCollect_but = new JoystickButton(driveStick_left,2);
     
     //Right Joysctick
     public static final Button manualEject_but = new JoystickButton(driveStick_right, 1);               //While Held
@@ -58,7 +61,11 @@ public class OI {
         
         //Auto Collect
         autoCollect_but.whenPressed(Init.checkCollect);
+        cancelFirstCollect_but.cancelWhenPressed(Init.firstCollect);
+        cancelSecondCollect_but.cancelWhenPressed(Init.secondCollect);
+        cancelThirdCollect_but.cancelWhenPressed(Init.thirdCollect);
         cancelCollect_but.whenPressed(Init.cancelCollect);
+        
         add_but.whenReleased(Init.addBall);
         subtract_but.whenReleased(Init.subtractBall);
 

@@ -44,8 +44,8 @@ public class DriveSelector extends CommandBase {
         if (defaultDriveMode != null && defaultDriveMode.doesRequire(drivebase)){
             defaultDriveMode.start();
         } else {
-            Init.manualTankDrive.start();        //This is the standard drive mode in case defaultDriveMode gets corrupt or unset
-            defaultDriveMode = Init.manualTankDrive;
+            Init.haloDrive.start();        //This is the standard drive mode in case defaultDriveMode gets corrupt or unset
+            defaultDriveMode = Init.haloDrive;
         }
     }
 

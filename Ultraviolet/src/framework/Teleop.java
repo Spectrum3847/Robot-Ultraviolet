@@ -15,7 +15,7 @@ public class Teleop {
     public static void init(){
         CommandBase.magazine.setSpeed(0.0);
         CommandBase.loader.setSpeed(0.0);
-        Init.manualTankDrive.start();      
+        Init.haloDrive.start();      
         Init.runCompressor.start();
         Init.stopGyroDrift.start();
         
@@ -30,11 +30,9 @@ public class Teleop {
             CommandBase.loader.clearBalls();
         if(CommandBase.loader.getBallCount() == 4)
             CommandBase.loader.subtractBall();
-        
-        
+     
         Scheduler.getInstance().run();
-        
-        
+   
     }
     
     

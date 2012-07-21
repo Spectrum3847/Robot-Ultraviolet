@@ -21,6 +21,7 @@ public class ThirdCollect extends CommandGroup {
         requires(CommandBase.loader);
         requires(CommandBase.magazine);
         requires(CommandBase.chamber);
+        setInterruptible(false);
         
         
         addSequential(new MoveToLoader());
