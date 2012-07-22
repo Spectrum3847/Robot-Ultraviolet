@@ -41,6 +41,9 @@ public class AutoAim {
         x3 = (double)inputArray[6];
         y3 = yTotalPixels - (double)inputArray[7];
     
+        if(x0 == 0 || y0 == 0 || x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0 || x3 == 0 || y3 == 0)
+            return 3847;
+        
         double yPixelDistanceLeft = y0 - y3;
         double yPixelDistanceRight = y1 - y2;
         
@@ -74,6 +77,9 @@ public class AutoAim {
         y2 = yTotalPixels - (double)inputArray[5];
         x3 = (double)inputArray[6];
         y3 = yTotalPixels - (double)inputArray[7];
+        
+        if(x0 == 0 || y0 == 0 || x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0 || x3 == 0 || y3 == 0)
+            return 3847;
         
         //from getDistance method
         double yPixelDistanceLeft = y0 - y3;
