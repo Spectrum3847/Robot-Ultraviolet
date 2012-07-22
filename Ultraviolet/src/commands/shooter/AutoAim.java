@@ -11,6 +11,9 @@ package commands.shooter;
 public class AutoAim {
     
     //order of pixel data input: topLeft, topRight, bottomRight, bottomLeft
+    public static final double xTotalPixels = 320;
+    public static final double yTotalPixels = 240;
+    
     
     public static double x0,y0;
       
@@ -30,13 +33,13 @@ public class AutoAim {
             return 0;
          
         x0 = (double)inputArray[0]; //initializes doubles
-        y0 = 480.0 - (double)inputArray[1];
+        y0 = yTotalPixels - (double)inputArray[1];
         x1 = (double)inputArray[2];
-        y1 = 480.0 - (double)inputArray[3];
+        y1 = yTotalPixels - (double)inputArray[3];
         x2 = (double)inputArray[4];
-        y2 = 480.0 - (double)inputArray[5];
+        y2 = yTotalPixels- (double)inputArray[5];
         x3 = (double)inputArray[6];
-        y3 = 480.0 - (double)inputArray[7];
+        y3 = yTotalPixels - (double)inputArray[7];
     
         double yPixelDistanceLeft = y0 - y3;
         double yPixelDistanceRight = y1 - y2;
@@ -64,13 +67,13 @@ public class AutoAim {
             return 0;
         
         x0 = (double)inputArray[0]; //initializes doubles
-        y0 = 480.0 - (double)inputArray[1];
+        y0 = yTotalPixels - (double)inputArray[1];
         x1 = (double)inputArray[2];
-        y1 = 480.0 - (double)inputArray[3];
+        y1 = yTotalPixels - (double)inputArray[3];
         x2 = (double)inputArray[4];
-        y2 = 480.0 - (double)inputArray[5];
+        y2 = yTotalPixels - (double)inputArray[5];
         x3 = (double)inputArray[6];
-        y3 = 480.0 - (double)inputArray[7];
+        y3 = yTotalPixels - (double)inputArray[7];
         
         //from getDistance method
         double yPixelDistanceLeft = y0 - y3;
@@ -94,16 +97,16 @@ public class AutoAim {
         double distanceToCorrectPixels;
         double angleToCorrect;
         
-        if((x0+x1+x2+x3)/4 > 320){
+        if((x0+x1+x2+x3)/4 > xTotalPixels/2){
             //need to go to right
-            distanceToCorrectPixels = (x1+x2)/2 - 320;
-            angleToCorrect = 47.0 * distanceToCorrectPixels / 640.0;
+            distanceToCorrectPixels = (x1+x2)/2 - xTotalPixels/2;
+            angleToCorrect = 47.0 * distanceToCorrectPixels / xTotalPixels;
             return angleToCorrect;
         }
-        else if((x0 + x1 + x2 + x3)/4 < 320){
+        else if((x0 + x1 + x2 + x3)/4 < xTotalPixels/2){
             //need to go to left
-            distanceToCorrectPixels = 320 - (x0+x3)/2;
-            angleToCorrect = 47.0 * distanceToCorrectPixels / 640.0;
+            distanceToCorrectPixels = xTotalPixels/2 - (x0+x3)/2;
+            angleToCorrect = 47.0 * distanceToCorrectPixels / xTotalPixels;
             return angleToCorrect*-1;
         }
         else return 0;
