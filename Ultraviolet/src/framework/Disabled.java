@@ -26,7 +26,7 @@ public class Disabled {
     public static void periodic(){
         Scheduler.getInstance().run();
         SpectrumDashboard.updateDashboard();
-        //Timer.delay(50);
+        Timer.delay(.2);
     }
     
     public static void continuous(){

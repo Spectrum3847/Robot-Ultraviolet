@@ -7,6 +7,7 @@ package subsystems;
 import commands.shooter.AutoAim;
 import driver.CamData;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -24,10 +25,14 @@ public class Camera extends Subsystem {
     
     public void connect(){
         data = new CamData("10.38.47.133","8882");
+        SmartDashboard.putBoolean("Camera Running",true);
     }
     
     public void disconnect(){
+        try{
         CamData.disconnect();
+        }catch(NullPointerException e){System.out.println("No instance running");}
+        SmartDashboard.putBoolean("Camera Running",false);
     }
     
     public String getRaw(){

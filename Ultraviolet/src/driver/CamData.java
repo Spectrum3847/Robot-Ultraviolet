@@ -38,7 +38,8 @@ public class CamData {
             is = clientSocket.openInputStream();
             os = clientSocket.openOutputStream();
             System.out.println(clientSocket.getAddress() + ":" + clientSocket.getPort());
-        }catch(IOException e){System.out.println("Failed to connect to camera");}
+        }catch(IOException e){System.out.println("Failed to connect to camera");
+            }
         
     }
     
