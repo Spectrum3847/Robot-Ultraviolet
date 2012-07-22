@@ -13,8 +13,8 @@ public class AutoAim {
     //known values
     public static final double xPixels = 320.0;
     public static final double yPixels = 240.0;
-    public static final double xFieldRadians = Math.toRadians(47.0);
-    public static final double yFieldRadians = Math.toRadians(35.25);
+    public static final double xFieldRadians = Math.toRadians(68.0);
+    public static final double yFieldRadians = Math.toRadians(51.0);
     public static final double targetY = 1.5;
     public static final double cameraTilt = Math.toRadians(20.0);
     
