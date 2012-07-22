@@ -41,6 +41,9 @@ public class AutoAim {
         x3 = (double)inputArray[6];
         y3 = yTotalPixels - (double)inputArray[7];
     
+        if(x0 == 0 || y0 == 0 || x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0 || x3 == 0 || y3 == 0)
+            return 0;
+        
         double yPixelDistanceLeft = y0 - y3;
         double yPixelDistanceRight = y1 - y2;
         
@@ -58,7 +61,7 @@ public class AutoAim {
         double distanceLeft = alphaLeft * Math.sin(Math.PI/2 - elevationAngleLeftRadians) / Math.sin(Math.PI/2);
         double distanceRight = alphaRight * Math.sin(Math.PI/2 - elevationAngleRightRadians) / Math.sin(Math.PI/2);
         
-        return (distanceLeft + distanceRight) / 2.0;
+        return (distanceLeft + distanceRight) / 2.0 /.3048; //converts back to feet
     }
     
     //returns the angle to the center of the goal: positive for angle-correction needed to right, negative for correction needed to left
@@ -74,6 +77,9 @@ public class AutoAim {
         y2 = yTotalPixels - (double)inputArray[5];
         x3 = (double)inputArray[6];
         y3 = yTotalPixels - (double)inputArray[7];
+        
+        if(x0 == 0 || y0 == 0 || x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0 || x3 == 0 || y3 == 0)
+            return 0;
         
         //from getDistance method
         double yPixelDistanceLeft = y0 - y3;
