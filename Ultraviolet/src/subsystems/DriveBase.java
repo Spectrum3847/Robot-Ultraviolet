@@ -17,10 +17,9 @@ import framework.Init;
 public class DriveBase extends PIDSubsystem {
     
      //Drive Motor Controller
-     public static double kP = 0.0;
      private Jaguar jag_1,jag_2,jag_3,jag_4;
      private Jaguar[] jag_arr;
-     private final RobotDrive robotDrive;
+     private RobotDrive robotDrive;
      
      //Drive Encoders
      private Encoder left_encoder;
@@ -34,9 +33,10 @@ public class DriveBase extends PIDSubsystem {
 
     
      public DriveBase(){
-         super(kP,HW.SKEW_KI,HW.SKEW_KD);
+         super(HW.SKEW_KP,HW.SKEW_KI,HW.SKEW_KD);
          setJaguars();
          robotDrive = new RobotDrive(jag_1, jag_2, jag_3, jag_4);
+         robotDrive.setMaxOutput(1.0);
          left_encoder = new Encoder(HW.LDRIVE_ENCODER_A,HW.LDRIVE_ENCODER_B,true,CounterBase.EncodingType.k1X);
          left_encoder.setDistancePerPulse(HW.DRIVEBASE_PULSE);
          right_encoder = new Encoder(HW.RDRIVE_ENCODER_A,HW.RDRIVE_ENCODER_B,true,CounterBase.EncodingType.k1X);
@@ -193,13 +193,13 @@ public class DriveBase extends PIDSubsystem {
     
     private void setJaguars(){
         jag_arr = new Jaguar[4];
-        jag_1 = new Jaguar(7); //Front Left
+        jag_1 = new Jaguar(HW.FRONT_LDRIVE_MOTOR); //Front Left 7
         jag_arr[0] = jag_1;
-        jag_2 = new Jaguar(8); //Rear Left
+        jag_2 = new Jaguar(HW.REAR_LDRIVE_MOTOR); //Rear Left 8
         jag_arr[1] = jag_2;
-        jag_3 = new Jaguar(6); //Front Right
+        jag_3 = new Jaguar(HW.FRONT_RDRIVE_MOTOR); //Front Right 6
         jag_arr[2] = jag_3;
-        jag_4 = new Jaguar(5); //Rear Right
+        jag_4 = new Jaguar(HW.REAR_RDRIVE_MOTOR); //Rear Right 5
         jag_arr[3] = jag_4;
     }
     

@@ -12,10 +12,10 @@ import edu.wpi.first.wpilibj.CANJaguar;
 public class HW {
 
     /**DRIVEBASE MOTOR ASSIGNMENTS**/
-    public static final int REAR_LDRIVE_MOTOR = 7;
-    public static final int REAR_RDRIVE_MOTOR = 8;
-    public static final int FRONT_LDRIVE_MOTOR = 6;
-    public static final int FRONT_RDRIVE_MOTOR = 5;
+    public static final int FRONT_LDRIVE_MOTOR = 5;
+    public static final int REAR_LDRIVE_MOTOR = 6;
+    public static final int REAR_RDRIVE_MOTOR = 7;
+    public static final int FRONT_RDRIVE_MOTOR = 8;
     
     /**NON-DRIVEBASE MOTOR ASSIGNMENTS (PWM)**/
     public static final int FRONT_SHOOTER_MOTOR = 1;
@@ -59,11 +59,18 @@ public class HW {
     public static final double SKEW_KD = 0.0;
     
     /**
-     * Turn Controller PID - QuickTurn
+     * Turn Controller PID - QuickTurn Left
      */
-    public static final double TURN_KP = 0.0;
-    public static final double TURN_KI = 0.0;
-    public static final double TURN_KD = 0.0;
+    public static final double TURN_LEFT_KP = 0.1;
+    public static final double TURN_LEFT_KI = 0.0;
+    public static final double TURN_LEFT_KD = 0.2;
+    
+        /**
+     * Turn Controller PID - QuickTurn Right
+     */
+    public static final double TURN_RIGHT_KP = 0.1;
+    public static final double TURN_RIGHT_KI = 0.0;
+    public static final double TURN_RIGHT_KD = 0.28;
     
     /**DIGITAL SENSOR ALLOCATIONS**/
     public static final int RDRIVE_ENCODER_A = 1;

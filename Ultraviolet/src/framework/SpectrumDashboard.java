@@ -6,6 +6,7 @@ package framework;
 
 import commands.CommandBase;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -15,6 +16,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class SpectrumDashboard {
 
     static final boolean ENABLE_SPECTRUM_DASHBOARD = true;
+    static final boolean TURN_PID_TUNING = true;
+    static final boolean COLLECTOR_TESTING = false;
     static final double SHORT_DELAY = .2;
     static double shortOldTime = 0.0;
     static final double LONG_DELAY = 2;
@@ -28,9 +31,11 @@ public class SpectrumDashboard {
             SmartDashboard.putBoolean("Halo", Init.haloDrive.isRunning());
             SmartDashboard.putBoolean("HaloPID", Init.pidHaloDrive.isRunning());
             SmartDashboard.putBoolean("Jacks Down", CommandBase.pneumatics.isJacks());
-        
+
             //Intialize Single calls here, useful for PID data
-            //SmartDashboard.putData(CommandBase.drivebase);
+            if (TURN_PID_TUNING) {
+                //SmartDashboard.putData(CommandBase.drivebase);
+            }
         }
     }
 
@@ -40,29 +45,33 @@ public class SpectrumDashboard {
 
             if ((Timer.getFPGATimestamp() - shortOldTime) > SHORT_DELAY) {
                 //All Dashboard commands that should be updated after the quick SHORT_DELAY
-                SmartDashboard.putDouble("Ball Count",CommandBase.loader.getBallCount());
+                SmartDashboard.putDouble("Ball Count", CommandBase.loader.getBallCount());
                 SmartDashboard.putDouble("RPM DIAL", OI.panel.getRPMAxis());
-                //SmartDashboard.putDouble("Turn Controller Angle", CommandBase.drivebase.getAngle());
-                //SmartDashboard.putBoolean("TurnControllerEnable", CommandBase.drivebase.isControllerEnanbled());
-                //SmartDashboard.putDouble("Turn PID Output", CommandBase.drivebase.getPIDTurnOutput());
-                //SmartDashboard.putDouble("LeftDrive", CommandBase.drivebase.getJaguar(1).get());
-                //SmartDashboard.putDouble("RightDrive", CommandBase.drivebase.getJaguar(3).get());
                 SmartDashboard.putBoolean("FULL PRESSURE", CommandBase.pneumatics.isMaxPSI());
-                SmartDashboard.putBoolean("Dial Sp. Ctrl.",Init.panel_speedControl.isRunning());
-                
-                SmartDashboard.putBoolean("FirstCollect Running",Init.firstCollect.isRunning());
-                SmartDashboard.putBoolean("SecondCollect Running",Init.secondCollect.isRunning());
-                SmartDashboard.putBoolean("ThirdCollect Running",Init.thirdCollect.isRunning());
-                
-                SmartDashboard.putBoolean("At Speed",CommandBase.shooter.inRange());
-                
-                
+                SmartDashboard.putBoolean("Dial Sp. Ctrl.", Init.panel_speedControl.isRunning());
+                SmartDashboard.putBoolean("At Speed", CommandBase.shooter.inRange());
+                SmartDashboard.putDouble("LeftDrive", CommandBase.drivebase.getJaguar(1).get());
+                SmartDashboard.putDouble("RightDrive", CommandBase.drivebase.getJaguar(3).get());
+
+                if (TURN_PID_TUNING) {
+                    SmartDashboard.putDouble("Turn Controller Angle", CommandBase.drivebase.getAngle());
+                    SmartDashboard.putBoolean("TurnControllerEnable", CommandBase.drivebase.isControllerEnanbled());
+                    SmartDashboard.putDouble("Turn PID Output", CommandBase.drivebase.getPIDTurnOutput());
+                    SmartDashboard.putDouble("Turn Setpoint", CommandBase.drivebase.getSetpoint());
+                }
+
+                if (COLLECTOR_TESTING) {
+                    SmartDashboard.putBoolean("FirstCollect Running", Init.firstCollect.isRunning());
+                    SmartDashboard.putBoolean("SecondCollect Running", Init.secondCollect.isRunning());
+                    SmartDashboard.putBoolean("ThirdCollect Running", Init.thirdCollect.isRunning());
+                }
+
                 shortOldTime = Timer.getFPGATimestamp();
             }
 
             if ((Timer.getFPGATimestamp() - longOldTime) > LONG_DELAY) {
                 //Thing that should be updated every LONG_DELAY
-                //SmartDashboard.putData(Scheduler.getInstance());
+                SmartDashboard.putData(Scheduler.getInstance());
                 longOldTime = Timer.getFPGATimestamp();
             }
         }
