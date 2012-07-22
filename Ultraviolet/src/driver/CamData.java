@@ -99,13 +99,13 @@ public class CamData {
         {
             int farray[] = new int[8];
             farray[0] = Integer.parseInt(String.valueOf(input.toCharArray(), 0, 3));
-            farray[0] = Integer.parseInt(String.valueOf(input.toCharArray(), 3, 3));
-            farray[0] = Integer.parseInt(String.valueOf(input.toCharArray(), 6, 3));
-            farray[0] = Integer.parseInt(String.valueOf(input.toCharArray(), 9, 3));
-            farray[0] = Integer.parseInt(String.valueOf(input.toCharArray(), 12, 3));
-            farray[0] = Integer.parseInt(String.valueOf(input.toCharArray(), 15, 3));
-            farray[0] = Integer.parseInt(String.valueOf(input.toCharArray(), 18, 3));
-            farray[0] = Integer.parseInt(String.valueOf(input.toCharArray(), 21, 3));
+            farray[1] = Integer.parseInt(String.valueOf(input.toCharArray(), 3, 3));
+            farray[2] = Integer.parseInt(String.valueOf(input.toCharArray(), 6, 3));
+            farray[3] = Integer.parseInt(String.valueOf(input.toCharArray(), 9, 3));
+            farray[4] = Integer.parseInt(String.valueOf(input.toCharArray(), 12, 3));
+            farray[5] = Integer.parseInt(String.valueOf(input.toCharArray(), 15, 3));
+            farray[6] = Integer.parseInt(String.valueOf(input.toCharArray(), 18, 3));
+            farray[7] = Integer.parseInt(String.valueOf(input.toCharArray(), 21, 3));
             return farray;
         }
         return null;
