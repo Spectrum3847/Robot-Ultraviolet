@@ -47,6 +47,11 @@ public class OI {
     public static final Button manualCollect_panel_but = new JoystickButton(panel.getPanel(), Panel.UP); //While Held 
     public static final Button speedControl_panel_but = new JoystickButton(panel.getPanel(),Panel.SPD);  //While Held
     
+    //Panel Camera Controls
+    public static final Button cam_init_but = new JoystickButton(panel.getPanel(),Panel.INIT);
+    public static final Button cam_disc_but = new JoystickButton(panel.getPanel(),Panel.CAN);
+    public static final Button cam_data_but = new JoystickButton(panel.getPanel(),Panel.HUP);
+    
     //Use this constructor to setup up button schedulers for commands
     public OI() {
 
@@ -78,6 +83,9 @@ public class OI {
         //Shooter Control
         speedControl_panel_but.toggleWhenPressed(Init.panel_speedControl);
         fire_but.whenPressed(Init.shootBall);
+        cam_data_but.toggleWhenPressed(Init.printCam);
+        cam_init_but.whenPressed(Init.connectCam);
+        cam_disc_but.whenPressed(Init.disconnectCam);
         
         /*
          * These next functions need the modified wpilibj Button.java

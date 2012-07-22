@@ -52,6 +52,9 @@ public class Init {
     public static final Command shootThird = new ShootThird();
     public static final Command shootSecond = new ShootSecond();
     public static final Command shootFirst = new ShootFirst();
+    public static final Command connectCam = new ConnectToCamera();
+    public static final Command disconnectCam = new DisconnectCamera();
+    public static final Command printCam = new PrintCamData();
 
 
     

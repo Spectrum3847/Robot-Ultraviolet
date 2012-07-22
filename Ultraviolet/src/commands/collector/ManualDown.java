@@ -14,6 +14,9 @@ public class ManualDown extends CommandBase {
     public ManualDown() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        requires(loader);
+        requires(magazine);
+        requires(chamber);
     }
 
     // Called just before this Command runs the first time

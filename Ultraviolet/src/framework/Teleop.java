@@ -5,6 +5,7 @@
 package framework;
 
 import commands.CommandBase;
+import driver.CamData;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 public class Teleop {
@@ -30,6 +31,8 @@ public class Teleop {
             CommandBase.loader.clearBalls();
         if(CommandBase.loader.getBallCount() == 4)
             CommandBase.loader.subtractBall();
+        
+        //System.out.println(CamData.receiveRaw());
         
         
         Scheduler.getInstance().run();

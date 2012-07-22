@@ -15,7 +15,7 @@ import javax.microedition.io.SocketConnection;
  *
  * @author David
  */
-public class Camera {
+public class CamData {
     
     
     private static String url;
@@ -26,11 +26,11 @@ public class Camera {
     
 
     
-    public Camera(){
+    public CamData(){
         this(HW.CAMERA_IP,HW.CAMERA_PORT);
     }
     
-    public Camera(String ip, String port){
+    public CamData(String ip, String port){
         try
         {
             url = "socket://" + ip + ":" + port;
@@ -40,6 +40,16 @@ public class Camera {
             System.out.println(clientSocket.getAddress() + ":" + clientSocket.getPort());
         }catch(IOException e){System.out.println("Failed to connect to camera");}
         
+    }
+    
+    public static void disconnect(){
+        try {
+            clientSocket.close();
+            os.close();
+            is.close();
+        } catch (IOException ex) {
+            System.out.println("Disconnect Failed");
+        }
     }
     
     public static String receiveRaw()
@@ -83,7 +93,7 @@ public class Camera {
         return null;
     }
     
-    private static int[] parseCamData(String input)
+    public static int[] parseCamData(String input)
     {
         if(input != null)
         {
