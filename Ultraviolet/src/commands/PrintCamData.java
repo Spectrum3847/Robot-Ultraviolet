@@ -19,7 +19,7 @@ public class PrintCamData extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.println(cam.getRaw());
+        System.out.println("Distance: " + cam.getDistance() + " : Offset: " + cam.getOffset());
     }
 
     // Called repeatedly when this Command is scheduled to run

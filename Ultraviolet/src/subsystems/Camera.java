@@ -4,6 +4,7 @@
  */
 package subsystems;
 
+import commands.shooter.AutoAim;
 import driver.CamData;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -46,6 +47,14 @@ public class Camera extends Subsystem {
         }
         
        return str;
+    }
+    
+    public double getDistance(){
+        return AutoAim.getDistance(getData());
+    }
+    
+    public double getOffset(){
+        return AutoAim.getAngleToGoal(getData());
     }
    
 }
