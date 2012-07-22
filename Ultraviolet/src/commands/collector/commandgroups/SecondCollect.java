@@ -21,7 +21,8 @@ public class SecondCollect extends CommandGroup {
         // eg. requires(chassis);
         requires(CommandBase.loader);
         requires(CommandBase.magazine);
-        requires(CommandBase.chamber);
+        requires(CommandBase.chamber);        
+        setInterruptible(false);
         
         addSequential(new MoveToLoader());
         addSequential(new MoveToLowerMagazine());
