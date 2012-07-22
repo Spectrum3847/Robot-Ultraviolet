@@ -61,7 +61,7 @@ public class AutoAim {
         double distanceLeft = alphaLeft * Math.sin(Math.PI/2 - elevationAngleLeftRadians) / Math.sin(Math.PI/2);
         double distanceRight = alphaRight * Math.sin(Math.PI/2 - elevationAngleRightRadians) / Math.sin(Math.PI/2);
         
-        return (distanceLeft + distanceRight) / 2.0;
+        return (distanceLeft + distanceRight) / 2.0 /.3048; //converts back to feet
     }
     
     //returns the angle to the center of the goal: positive for angle-correction needed to right, negative for correction needed to left
