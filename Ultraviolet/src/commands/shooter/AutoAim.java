@@ -12,11 +12,12 @@ public class AutoAim {
     
     //known values
     public static final double xPixels = 320.0;
-    public static double yPixels;
+    public static double yPixels = 240.0;
     public static final double xFieldRadians = Math.toRadians(68.0);
     public static final double yFieldRadians = Math.toRadians(51.0);
     public static final double targetY = 1.5;
     public static final double cameraTilt = Math.toRadians(20.0) - yFieldRadians/2;
+    public static double yFieldRadiansEffective;
     
     public static double x0,y0,x1,y1,x2,y2,x3,y3;
     
@@ -51,28 +52,30 @@ public class AutoAim {
         double x = angle * 240.0 / yFieldRadians;
         yPixels = 240.0 - x;
         
-        elevationAngle1 = yFieldRadians * y3 / yPixels;
-        elevationAngle2 = yFieldRadians * y2 / yPixels;
+        yFieldRadiansEffective = yFieldRadians - angle;
         
-        sectionAngle1 = yFieldRadians* (y0 - y3) / yPixels;
-        sectionAngle2 = yFieldRadians* (y1 - y2) / yPixels;
         
-        alpha1 = Math.toRadians(90.0)-(cameraTilt+elevationAngle1+sectionAngle1);
-        alpha2 = Math.toRadians(90.0)-(cameraTilt+elevationAngle2+sectionAngle2);
+        elevationAngle1 = y3 * yFieldRadiansEffective / yPixels;
+        elevationAngle2 = y2 * yFieldRadiansEffective / yPixels;
+        
+        sectionAngle1 = yFieldRadiansEffective *(y0-y3) / yPixels;
+        sectionAngle2 = yFieldRadiansEffective * (y1-y2) / yPixels;
+        
+        alpha1 = Math.toRadians(90.0)-(elevationAngle1+sectionAngle1);
+        alpha2 = Math.toRadians(90.0)-(elevationAngle2+sectionAngle2);
         
         q1 = targetY * Math.sin(alpha1) / Math.sin(sectionAngle1);
         q2 = targetY* Math.sin(alpha2) / Math.sin(sectionAngle2);
         
-        beta1 = Math.toRadians(180.0) - sectionAngle1 - alpha1;
-        beta2 = Math.toRadians(180.0) - sectionAngle2 - alpha2;
+        beta1 = Math.toRadians(90) - elevationAngle1;
+        beta2 = Math.toRadians(90) - elevationAngle2;
         
-        r1 = targetY * Math.sin(beta1) / Math.sin(sectionAngle1);
-        r2 = targetY * Math.sin(beta2) / Math.sin(sectionAngle2);
+        r1 = q1 * Math.sin(beta1);
+        r2 = q2 * Math.sin(beta2);
         
-        s1 = r1*Math.sin(alpha1);
-        s2 = r2*Math.sin(alpha2);
+       
         
-        return (s1+s2)/2;
+        return (r1+r2)/2;
     }
     
     public static double getOffsetAngle(int[] inputArray){
