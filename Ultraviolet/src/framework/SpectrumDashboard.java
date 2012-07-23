@@ -50,8 +50,8 @@ public class SpectrumDashboard {
                 SmartDashboard.putBoolean("FULL PRESSURE", CommandBase.pneumatics.isMaxPSI());
                 SmartDashboard.putBoolean("Dial Sp. Ctrl.", Init.panel_speedControl.isRunning());
                 SmartDashboard.putBoolean("At Speed", CommandBase.shooter.inRange());
-                SmartDashboard.putDouble("LeftDrive", CommandBase.drivebase.getJaguar(1).get());
-                SmartDashboard.putDouble("RightDrive", CommandBase.drivebase.getJaguar(3).get());
+                SmartDashboard.putDouble("LeftDrive Velocity", CommandBase.drivebase.getLeftVelocity());
+                SmartDashboard.putDouble("RightDrive Velocity", -1*CommandBase.drivebase.getRightVelocity());
 
                 if (TURN_PID_TUNING) {
                     SmartDashboard.putDouble("Turn Controller Angle", CommandBase.drivebase.getAngle());
