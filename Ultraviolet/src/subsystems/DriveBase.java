@@ -24,12 +24,18 @@ public class DriveBase extends PIDSubsystem {
      //Drive Encoders
      private Encoder left_encoder;
      private Encoder right_encoder;
+     private double leftOldTime = 0;
+     private double rightOldTime = 0;
+     private double leftOldDistance = 0;
+     private double rightOldDistance = 0;
      
      //Drive X Gyro
      private AnalogChannel x_gyro_raw;
      private SendableGyro x_gyro;
      private double turnControllerOut = 0;
      private double tolerance = 1; //Percentage of error that the turn controller can be off and still be onTarget()
+     
+     
 
     
      public DriveBase(){
@@ -155,6 +161,39 @@ public class DriveBase extends PIDSubsystem {
     public Encoder getLeftEncoder(){
         return left_encoder;
     }
+    
+    public double getLeftVelocity(){
+        left_encoder.start();
+        if (leftOldTime > 0){
+            double newTime = Timer.getFPGATimestamp();
+            double newDistance = getLeftEncoder().getDistance();
+            double leftVelocity =  (newDistance - leftOldDistance)/(newTime - leftOldTime);
+            leftOldDistance = newDistance;
+            leftOldTime = newTime;
+            return leftVelocity;
+        } else{
+            leftOldDistance = getLeftEncoder().getDistance();
+            leftOldTime = Timer.getFPGATimestamp();
+            return 0;
+        }
+    }
+    
+    public double getRightVelocity(){
+        right_encoder.start();
+        if (rightOldTime > 0){
+            double newTime = Timer.getFPGATimestamp();
+            double newDistance = getRightEncoder().getDistance();
+            double leftVelocity =  (newDistance - rightOldDistance)/(newTime - rightOldTime);
+            rightOldDistance = newDistance;
+            rightOldTime = newTime;
+            return leftVelocity;
+        } else{
+            rightOldDistance = getRightEncoder().getDistance();
+            rightOldTime = Timer.getFPGATimestamp();
+            return 0;
+        }
+    }
+    
     
     public void setLeft(double left_speed){
         robotDrive.tankDrive(left_speed, jag_3.get());
