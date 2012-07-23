@@ -59,7 +59,7 @@ public class Camera extends Subsystem {
     }
     
     public double getOffset(){
-        return AutoAim.getAngleToGoal(getData());
+        return AutoAim.getOffsetAngle(getData());
     }
    
 }
