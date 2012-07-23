@@ -12,7 +12,7 @@ public class AutoAim {
     
     //known values
     public static final double xPixels = 320.0;
-    public static final double yPixels = 240.0;
+    public static double yPixels;
     public static final double xFieldRadians = Math.toRadians(68.0);
     public static final double yFieldRadians = Math.toRadians(51.0);
     public static final double targetY = 1.5;
@@ -46,6 +46,10 @@ public class AutoAim {
     
         if(x0 == 0 || y0 == 0 || x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0 || x3 == 0 || y3 == 0)
             return 0;
+        
+        double angle = yFieldRadians/2 - cameraTilt;
+        double x = angle * 240.0 / yFieldRadians;
+        yPixels = 240.0 - x;
         
         elevationAngle1 = yFieldRadians * y3 / yPixels;
         elevationAngle2 = yFieldRadians * y2 / yPixels;
