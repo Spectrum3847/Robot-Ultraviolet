@@ -52,6 +52,7 @@ public class SpectrumDashboard {
                 SmartDashboard.putBoolean("At Speed", CommandBase.shooter.inRange());
                 SmartDashboard.putDouble("LeftDrive Velocity", CommandBase.drivebase.getLeftVelocity());
                 SmartDashboard.putDouble("RightDrive Velocity", -1*CommandBase.drivebase.getRightVelocity());
+                SmartDashboard.putDouble("Distance", CommandBase.cam.getDistance());
 
                 if (TURN_PID_TUNING) {
                     SmartDashboard.putDouble("Turn Controller Angle", CommandBase.drivebase.getAngle());
