@@ -15,13 +15,8 @@ public class AutoAim {
    public static final double xPixelsTotal = 320.0;
    public static final double cameraTilt = Math.toRadians(20.0);
    public static final double targetDimension = 1.5;
-   public static final double yFieldTotal = Math.toRadians(51.0); //find 
-   public static final double xFieldTotal = Math.toRadians(68.0); //find
-   
-   public static final double belowHorizontal = yFieldTotal/2.0 - cameraTilt;
-   public static final double yView = yFieldTotal - belowHorizontal;
-   public static final double yCutoff = belowHorizontal * yPixelsTotal / yFieldTotal;
-   public static final double yPixelsView = yPixelsTotal - yCutoff;
+   public static final double yFieldTotal = Math.toRadians(40.8); //find 
+   public static final double xFieldTotal = Math.toRadians(54.4); //find
    
    public static double x0,y0,x1,y1,x2,y2,x3,y3;
    
@@ -37,6 +32,12 @@ public class AutoAim {
    public static double r;
    
    public static double getDistanceLeft(int[] inputArray){
+       
+       double belowHorizontal = yFieldTotal/2.0 - cameraTilt;
+       double yView = yFieldTotal - belowHorizontal;
+       double yCutoff = belowHorizontal * yPixelsTotal / yFieldTotal;
+       double yPixelsView = yPixelsTotal - yCutoff;
+       
        if(inputArray.length!=8)
            return 0;
        
@@ -64,6 +65,12 @@ public class AutoAim {
    }
    
    public static double getDistanceRight(int[] inputArray){
+       
+       double belowHorizontal = yFieldTotal/2.0 - cameraTilt;
+       double yView = yFieldTotal - belowHorizontal;
+       double yCutoff = belowHorizontal * yPixelsTotal / yFieldTotal;
+       double yPixelsView = yPixelsTotal - yCutoff;
+       
         if(inputArray.length!=8)
            return 0;
        
