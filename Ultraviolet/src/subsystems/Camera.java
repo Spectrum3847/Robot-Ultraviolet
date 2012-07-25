@@ -4,7 +4,7 @@
  */
 package subsystems;
 
-import commands.shooter.AutoAim;
+import driver.AutoAim;
 import driver.CamData;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
