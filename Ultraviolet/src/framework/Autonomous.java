@@ -5,6 +5,7 @@
 package framework;
 
 import commands.CommandBase;
+import commands.collector.commandgroups.AutonFire;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
 /**
@@ -14,7 +15,10 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 public class Autonomous {
     
     public static void init(){
-        CommandBase.pneumatics.runCompressor();
+        CommandBase.loader.clearBalls();
+        CommandBase.loader.addBall();
+        CommandBase.loader.addBall();
+        (new AutonFire()).start();
     }
     
     public static void periodic(){

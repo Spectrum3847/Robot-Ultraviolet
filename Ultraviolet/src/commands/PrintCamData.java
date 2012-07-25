@@ -21,6 +21,7 @@ public class PrintCamData extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        cam.update();
         double distance = cam.getDistance();
         double offset = cam.getOffset();
         System.out.println("Distance: " + distance + " : Offset: " + offset);

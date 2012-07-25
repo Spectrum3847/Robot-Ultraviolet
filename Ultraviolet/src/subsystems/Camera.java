@@ -16,6 +16,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Camera extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
+    private int[] points;
+    
     private CamData data;
     private static final boolean DEBUG = true;
 
@@ -58,19 +60,23 @@ public class Camera extends Subsystem {
     }
     
     public double getDistance(){
-        if (isConnected()){
-            return AutoAim.getDistance(getData());
+        if (isConnected() && points != null){
+            return AutoAim.getDistance(points);
         } else {
             return 9999;
         }
     }
     
     public double getOffset(){
-        if (isConnected()){
-            return AutoAim.getOffsetAngle(getData());
+        if (isConnected() && points != null){
+            return AutoAim.getOffsetAngle(points);
         } else {
             return 9999;
         }
+    }
+    
+    public void update(){
+        points = getData();
     }
    
     public boolean isConnected(){
