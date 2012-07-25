@@ -37,11 +37,20 @@ public class AutonCollect extends CommandGroup {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+        Init.panel_speedControl.start();
         CommandBase.shooter.setRPM(OI.panel.getRPMAxis());
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    }
+    
+    public void end(){
+        Init.panel_speedControl.cancel();
+    }
+    
+    public void interrupted(){
+        end();
     }
 
 }

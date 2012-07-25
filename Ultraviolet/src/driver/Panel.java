@@ -41,7 +41,8 @@ public class Panel {
     public double getRPMAxis(){
        double val =  ((panel.getX()+1.0)/2.0)*3600.0;
        val /= 10.0;
-       return Math.ceil(val);
+       val = Math.ceil(val);
+       return val * 10;
     }
     
     public double getHoodAxis(){

@@ -15,6 +15,7 @@ public class Autonomous {
     
     public static void init(){
         CommandBase.pneumatics.runCompressor();
+        Init.auton_fire.start();
     }
     
     public static void periodic(){
