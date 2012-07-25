@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package commands.shooter;
+package driver;
 
 /**
  *
@@ -15,8 +15,8 @@ public class AutoAim {
    public static final double xPixelsTotal = 320.0;
    public static final double cameraTilt = Math.toRadians(20.0);
    public static final double targetDimension = 1.5;
-   public static final double yFieldTotal = Math.toRadians(40.8); //find 
-   public static final double xFieldTotal = Math.toRadians(54.4); //find
+   public static final double yFieldTotal = Math.toRadians(40.8); //40.8 default
+   public static final double xFieldTotal = Math.toRadians(54.4); //54.4 default
    
    public static double x0,y0,x1,y1,x2,y2,x3,y3;
    
@@ -42,13 +42,13 @@ public class AutoAim {
            return 0;
        
        x0 = (double)inputArray[0];
-       y0 = (double)inputArray[1];
-       x1 = (double)inputArray[2];
-       y1 = (double)inputArray[3];
+       y0 = yPixelsTotal - (double)inputArray[1];
+       x1 = (double)inputArray[6];
+       y1 = yPixelsTotal - (double)inputArray[7];
        x2 = (double)inputArray[4];
-       y2 = (double)inputArray[5];
-       x3 = (double)inputArray[6];
-       y3 = (double)inputArray[7];
+       y2 = yPixelsTotal - (double)inputArray[5];
+       x3 = (double)inputArray[2];
+       y3 = yPixelsTotal - (double)inputArray[3];
        
        if(x0 == 0 || y0 == 0 || x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0 || x3 == 0 || y3 == 0)
            return 0;
@@ -74,14 +74,14 @@ public class AutoAim {
         if(inputArray.length!=8)
            return 0;
        
-       x0 = (double)inputArray[0];
-       y0 = (double)inputArray[1];
-       x1 = (double)inputArray[2];
-       y1 = (double)inputArray[3];
+        x0 = (double)inputArray[0];
+       y0 = yPixelsTotal - (double)inputArray[1];
+       x1 = (double)inputArray[6];
+       y1 = yPixelsTotal - (double)inputArray[7];
        x2 = (double)inputArray[4];
-       y2 = (double)inputArray[5];
-       x3 = (double)inputArray[6];
-       y3 = (double)inputArray[7];
+       y2 = yPixelsTotal - (double)inputArray[5];
+       x3 = (double)inputArray[2];
+       y3 = yPixelsTotal - (double)inputArray[3];
        
        if(x0 == 0 || y0 == 0 || x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0 || x3 == 0 || y3 == 0)
            return 0;
@@ -98,7 +98,10 @@ public class AutoAim {
    }
    
    public static double getDistance(int[] inputArray){
-       return (getDistanceRight(inputArray) + getDistanceLeft(inputArray)) / 2;
+       if(getDistanceRight(inputArray) + getDistanceLeft(inputArray) / 2.0 > 100 || getDistanceRight(inputArray) + getDistanceLeft(inputArray) / 2.0 < 0){
+           return 0;
+       }
+       return (getDistanceRight(inputArray) + getDistanceLeft(inputArray)) / 2.0;
    }
    
    public static double getOffsetAngle(int[] inputArray){
@@ -106,16 +109,16 @@ public class AutoAim {
            return 0;
        
        x0 = (double)inputArray[0];
-       y0 = (double)inputArray[1];
-       x1 = (double)inputArray[2];
-       y1 = (double)inputArray[3];
+       y0 = yPixelsTotal - (double)inputArray[1];
+       x1 = (double)inputArray[6];
+       y1 = yPixelsTotal - (double)inputArray[7];
        x2 = (double)inputArray[4];
-       y2 = (double)inputArray[5];
-       x3 = (double)inputArray[6];
-       y3 = (double)inputArray[7];
+       y2 = yPixelsTotal - (double)inputArray[5];
+       x3 = (double)inputArray[2];
+       y3 = yPixelsTotal - (double)inputArray[3];
        
-       double center = xFieldTotal / 2;
-       double avg = (x0 + x1 + x2 + x3) / 4;
+       double center = xPixelsTotal / 2.0;
+       double avg = (x0 + x1 + x2 + x3) / 4.0;
        
        if(avg==center)
            return 0;
