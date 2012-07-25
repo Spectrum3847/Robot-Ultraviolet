@@ -4,6 +4,8 @@
  */
 package commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 /**
  *
  * @author root
@@ -19,7 +21,11 @@ public class PrintCamData extends CommandBase {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        System.out.println("Distance: " + cam.getDistance() + " : Offset: " + cam.getOffset());
+        double distance = cam.getDistance();
+        double offset = cam.getOffset();
+        System.out.println("Distance: " + distance + " : Offset: " + offset);
+        SmartDashboard.putDouble("Distance", distance);
+        SmartDashboard.putDouble("Offset", offset);
     }
 
     // Called repeatedly when this Command is scheduled to run

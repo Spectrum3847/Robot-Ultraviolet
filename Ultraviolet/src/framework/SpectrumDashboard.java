@@ -31,7 +31,11 @@ public class SpectrumDashboard {
             SmartDashboard.putBoolean("Halo", Init.haloDrive.isRunning());
             SmartDashboard.putBoolean("HaloPID", Init.pidHaloDrive.isRunning());
             SmartDashboard.putBoolean("Jacks Down", CommandBase.pneumatics.isJacks());
-
+            SmartDashboard.putBoolean("Compressor Running",Init.runCompressor.isRunning());
+            SmartDashboard.putDouble("Distance", 0);
+            SmartDashboard.putDouble("Offset", 0);
+            SmartDashboard.putInt("First Delay",0);
+            SmartDashboard.putInt("Second Delay",0);
             //Intialize Single calls here, useful for PID data
             if (TURN_PID_TUNING) {
                 //SmartDashboard.putData(CommandBase.drivebase);

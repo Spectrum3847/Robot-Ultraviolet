@@ -31,7 +31,9 @@ public class ConnectToCamera extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        System.out.println("Camera Connected");
+        if (cam.isConnected()){
+            System.out.println("Camera Connected");
+        } 
     }
 
     // Called when another command which requires one or more of the same

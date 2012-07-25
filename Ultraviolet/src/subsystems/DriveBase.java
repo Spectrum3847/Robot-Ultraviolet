@@ -17,8 +17,8 @@ import framework.Init;
 public class DriveBase extends PIDSubsystem {
     
      //Drive Motor Controller
-     private CANJaguar jag_1,jag_2,jag_3,jag_4;
-     private CANJaguar[] jag_arr;
+     private Jaguar jag_1,jag_2,jag_3,jag_4;
+     private Jaguar[] jag_arr;
      private RobotDrive robotDrive;
      
      //Drive Encoders
@@ -230,30 +230,40 @@ public class DriveBase extends PIDSubsystem {
      * START INIT COMMANDS
      */
     
-    private void setJaguars(){
+/*    private void setCANJaguars(){
         try{
         jag_arr = new CANJaguar[4];
-        jag_1 = new CANJaguar(3); //Front Left 7
+        jag_1 = HW.defJaguar(3);//new CANJaguar(3); //Front Left 7
         jag_arr[0] = jag_1;
-        jag_2 = new CANJaguar(2); //Rear Left 8
+        jag_2 = HW.defJaguar(2);//new CANJaguar(2); //Rear Left 8
         jag_arr[1] = jag_2;
-        jag_3 = new CANJaguar(1); //Front Right 6
+        jag_3 = HW.defJaguar(1); //new CANJaguar(1); //Front Right 6
         jag_arr[2] = jag_3;
-        jag_4 = new CANJaguar(6); //Rear Right 5
+        jag_4 = HW.defJaguar(6); //new CANJaguar(6); //Rear Right 5
         jag_arr[3] = jag_4;
         }catch(Exception e){System.out.println("Failed to initialize CAN");}
-    }
+    }*/
     
-
+    private void setJaguars(){
+        jag_arr = new Jaguar[4];
+        jag_1 = new Jaguar(HW.FRONT_LDRIVE_MOTOR);//new CANJaguar(3); //Front Left 7
+        jag_arr[0] = jag_1;
+        jag_2 = new Jaguar(HW.REAR_LDRIVE_MOTOR);//new CANJaguar(2); //Rear Left 8
+        jag_arr[1] = jag_2;
+        jag_3 = new Jaguar(HW.FRONT_RDRIVE_MOTOR); //new CANJaguar(1); //Front Right 6
+        jag_arr[2] = jag_3;
+        jag_4 = new Jaguar(HW.REAR_RDRIVE_MOTOR); //new CANJaguar(6); //Rear Right 5
+        jag_arr[3] = jag_4;
+    }
     /**
      * END INIT COMMANDS
      */
     
-    public CANJaguar getJaguar(int id){
+    public Jaguar getJaguar(int id){
         return jag_arr[id-1];
     }
     
-    public CANJaguar[] getJagArr(){
+    public Jaguar[] getJagArr(){
         return jag_arr;
     }
 }

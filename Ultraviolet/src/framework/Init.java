@@ -55,6 +55,10 @@ public class Init {
     public static final Command connectCam = new ConnectToCamera();
     public static final Command disconnectCam = new DisconnectCamera();
     public static final Command printCam = new PrintCamData();
+    
+    
+    //Auton Commands
+    public static final Command auton_fire = new AutonCollect();
 
 
     

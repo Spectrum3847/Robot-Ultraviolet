@@ -6,18 +6,17 @@ package commands;
 
 /**
  *
- * @author root
+ * @author JAG
  */
-public class SubtractBall extends CommandBase {
+public class shootingMode extends CommandBase {
     
-    public SubtractBall() {
+    public shootingMode() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        loader.subtractBall();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -26,7 +25,7 @@ public class SubtractBall extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

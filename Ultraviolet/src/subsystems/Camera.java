@@ -4,7 +4,7 @@
  */
 package subsystems;
 
-import commands.shooter.AutoAim;
+import driver.AutoAim;
 import driver.CamData;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -17,6 +17,7 @@ public class Camera extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     private CamData data;
+    private static final boolean DEBUG = true;
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -31,7 +32,9 @@ public class Camera extends Subsystem {
     public void disconnect(){
         try{
         CamData.disconnect();
-        }catch(NullPointerException e){System.out.println("No instance running");}
+        }catch(NullPointerException e){
+            System.out.println("No instance running");
+        }
         SmartDashboard.putBoolean("Camera Running",false);
     }
     
@@ -55,11 +58,22 @@ public class Camera extends Subsystem {
     }
     
     public double getDistance(){
-        return AutoAim.getDistance(getData());
+        if (isConnected()){
+            return AutoAim.getDistance(getData());
+        } else {
+            return 9999;
+        }
     }
     
     public double getOffset(){
-        return AutoAim.getOffsetAngle(getData());
+        if (isConnected()){
+            return AutoAim.getOffsetAngle(getData());
+        } else {
+            return 9999;
+        }
     }
    
+    public boolean isConnected(){
+        return CamData.isConnected();
+    }
 }
