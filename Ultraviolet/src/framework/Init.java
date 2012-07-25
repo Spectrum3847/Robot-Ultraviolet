@@ -58,7 +58,7 @@ public class Init {
     
     
     //Auton Commands
-    public static final Command auton_fire = new AutonCollect();
+    public static final Command auton_fire = new AutonFire();
 
 
     
