@@ -98,10 +98,20 @@ public class AutoAim {
    }
    
    public static double getDistance(int[] inputArray){
-       if(getDistanceRight(inputArray) + getDistanceLeft(inputArray) / 2.0 > 100 || getDistanceRight(inputArray) + getDistanceLeft(inputArray) / 2.0 < 0){
-           return 0;
-       }
-       return (getDistanceRight(inputArray) + getDistanceLeft(inputArray)) / 2.0;
+      double left = getDistanceLeft(inputArray);
+      double right = getDistanceRight(inputArray);
+      if((left > 100 || left < 0) && (right < 100 && right > 0)){
+          return right;
+      }
+      else if((right>100 || right < 0) && (left < 100 & left > 0)){
+          return left;
+      }
+      else if(right > 100 && left > 100)
+          return 10000;
+      else if(right < 0 && left < 0)
+          return 0;
+      else
+          return (getDistanceRight(inputArray) + getDistanceLeft(inputArray)) / 2.0;
    }
    
    public static double getOffsetAngle(int[] inputArray){
