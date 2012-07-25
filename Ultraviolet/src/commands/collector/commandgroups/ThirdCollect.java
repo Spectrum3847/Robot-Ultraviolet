@@ -2,11 +2,11 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package commands.collector;
+package commands.collector.commandgroups;
 
 import commands.CommandBase;
-import commands.collector.third.MoveToLoader;
-import commands.collector.third.MoveToMagazine;
+import commands.collector.MoveToLoader;
+import commands.collector.MoveToMagazine;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -18,6 +18,12 @@ public class ThirdCollect extends CommandGroup {
     public ThirdCollect() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        requires(CommandBase.loader);
+        requires(CommandBase.magazine);
+        requires(CommandBase.chamber);
+        setInterruptible(false);
+        
+        
         addSequential(new MoveToLoader());
         addSequential(new MoveToMagazine());
     }

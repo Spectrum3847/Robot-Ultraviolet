@@ -5,15 +5,16 @@
 package commands.drive;
 
 import commands.CommandBase;
+import framework.HW;
 
 /**
  *
  * @author JAG
  */
 public class TurnControlDrive extends CommandBase {
-    
+
     private double timeOut = 3; //Number of second before command exits automatically 
-    
+
     public TurnControlDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -27,6 +28,11 @@ public class TurnControlDrive extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+        if (drivebase.getSetpoint() < 0) {                           //negative is left
+            drivebase.setPID(HW.TURN_LEFT_KP, HW.TURN_LEFT_KI, HW.TURN_LEFT_KD);
+        } else if (drivebase.getSetpoint() > 0) {                                        //Right is positive
+            drivebase.setPID(HW.TURN_RIGHT_KP, HW.TURN_RIGHT_KI, HW.TURN_RIGHT_KD);
+        } 
         drivebase.setArcade(0, drivebase.getPIDTurnOutput());
     }
 
@@ -37,7 +43,8 @@ public class TurnControlDrive extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        CommandBase.drivebase.disableTurnController();
+        drivebase.setPID(HW.SKEW_KP, HW.SKEW_KI, HW.SKEW_KD);       //Reset to drive strait values
+        CommandBase.drivebase.reset();
     }
 
     // Called when another command which requires one or more of the same

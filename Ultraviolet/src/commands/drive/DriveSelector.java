@@ -14,7 +14,7 @@ import framework.Init;
  */
 public class DriveSelector extends CommandBase {
     
-    private Command defaultDriveMode = Init.manualTankDrive;
+    private Command defaultDriveMode = Init.haloDrive;
     
     public DriveSelector() {
         // Use requires() here to declare subsystem dependencies
@@ -44,8 +44,8 @@ public class DriveSelector extends CommandBase {
         if (defaultDriveMode != null && defaultDriveMode.doesRequire(drivebase)){
             defaultDriveMode.start();
         } else {
-            Init.manualTankDrive.start();        //This is the standard drive mode in case defaultDriveMode gets corrupt or unset
-            defaultDriveMode = Init.manualTankDrive;
+            Init.haloDrive.start();        //This is the standard drive mode in case defaultDriveMode gets corrupt or unset
+            defaultDriveMode = Init.haloDrive;
         }
     }
 

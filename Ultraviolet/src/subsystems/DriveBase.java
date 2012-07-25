@@ -18,20 +18,25 @@ import framework.Init;
 public class DriveBase extends PIDSubsystem {
     
      //Drive Motor Controller
-     public static double kP = 0.0;
      private Jaguar jag_1,jag_2,jag_3,jag_4;
      private Jaguar[] jag_arr;
-     private final RobotDrive robotDrive;
+     private RobotDrive robotDrive;
      
      //Drive Encoders
      private Encoder left_encoder;
      private Encoder right_encoder;
+     private double leftOldTime = 0;
+     private double rightOldTime = 0;
+     private double leftOldDistance = 0;
+     private double rightOldDistance = 0;
      
      //Drive X Gyro
      private AnalogChannel x_gyro_raw;
      private SendableGyro x_gyro;
      private double turnControllerOut = 0;
      private double tolerance = 1; //Percentage of error that the turn controller can be off and still be onTarget()
+     
+     
 
      //Used for leftVelocity
     public static double leftVelocity = 0;
@@ -39,9 +44,10 @@ public class DriveBase extends PIDSubsystem {
     private static double leftOldTime = 0;
     
      public DriveBase(){
-         super(kP,HW.SKEW_KI,HW.SKEW_KD);
+         super(HW.SKEW_KP,HW.SKEW_KI,HW.SKEW_KD);
          setJaguars();
          robotDrive = new RobotDrive(jag_1, jag_2, jag_3, jag_4);
+         robotDrive.setMaxOutput(1.0);
          left_encoder = new Encoder(HW.LDRIVE_ENCODER_A,HW.LDRIVE_ENCODER_B,true,CounterBase.EncodingType.k1X);
          left_encoder.setDistancePerPulse(HW.DRIVEBASE_PULSE);
          right_encoder = new Encoder(HW.RDRIVE_ENCODER_A,HW.RDRIVE_ENCODER_B,true,CounterBase.EncodingType.k1X);
@@ -161,6 +167,39 @@ public class DriveBase extends PIDSubsystem {
         return left_encoder;
     }
     
+    public double getLeftVelocity(){
+        left_encoder.start();
+        if (leftOldTime > 0){
+            double newTime = Timer.getFPGATimestamp();
+            double newDistance = getLeftEncoder().getDistance();
+            double leftVelocity =  (newDistance - leftOldDistance)/(newTime - leftOldTime);
+            leftOldDistance = newDistance;
+            leftOldTime = newTime;
+            return leftVelocity;
+        } else{
+            leftOldDistance = getLeftEncoder().getDistance();
+            leftOldTime = Timer.getFPGATimestamp();
+            return 0;
+        }
+    }
+    
+    public double getRightVelocity(){
+        right_encoder.start();
+        if (rightOldTime > 0){
+            double newTime = Timer.getFPGATimestamp();
+            double newDistance = getRightEncoder().getDistance();
+            double leftVelocity =  (newDistance - rightOldDistance)/(newTime - rightOldTime);
+            rightOldDistance = newDistance;
+            rightOldTime = newTime;
+            return leftVelocity;
+        } else{
+            rightOldDistance = getRightEncoder().getDistance();
+            rightOldTime = Timer.getFPGATimestamp();
+            return 0;
+        }
+    }
+    
+    
     public void setLeft(double left_speed){
         robotDrive.tankDrive(-left_speed, jag_3.get());
             //jag_1.set(left_speed);
@@ -219,19 +258,31 @@ public class DriveBase extends PIDSubsystem {
      * START INIT COMMANDS
      */
     
+/*    private void setCANJaguars(){
+        try{
+        jag_arr = new CANJaguar[4];
+        jag_1 = HW.defJaguar(3);//new CANJaguar(3); //Front Left 7
+        jag_arr[0] = jag_1;
+        jag_2 = HW.defJaguar(2);//new CANJaguar(2); //Rear Left 8
+        jag_arr[1] = jag_2;
+        jag_3 = HW.defJaguar(1); //new CANJaguar(1); //Front Right 6
+        jag_arr[2] = jag_3;
+        jag_4 = HW.defJaguar(6); //new CANJaguar(6); //Rear Right 5
+        jag_arr[3] = jag_4;
+        }catch(Exception e){System.out.println("Failed to initialize CAN");}
+    }*/
+    
     private void setJaguars(){
         jag_arr = new Jaguar[4];
-        jag_1 = new Jaguar(7); //Front Left
+        jag_1 = new Jaguar(HW.FRONT_LDRIVE_MOTOR);//new CANJaguar(3); //Front Left 7
         jag_arr[0] = jag_1;
-        jag_2 = new Jaguar(8); //Rear Left
+        jag_2 = new Jaguar(HW.REAR_LDRIVE_MOTOR);//new CANJaguar(2); //Rear Left 8
         jag_arr[1] = jag_2;
-        jag_3 = new Jaguar(6); //Front Right
+        jag_3 = new Jaguar(HW.FRONT_RDRIVE_MOTOR); //new CANJaguar(1); //Front Right 6
         jag_arr[2] = jag_3;
-        jag_4 = new Jaguar(5); //Rear Right
+        jag_4 = new Jaguar(HW.REAR_RDRIVE_MOTOR); //new CANJaguar(6); //Rear Right 5
         jag_arr[3] = jag_4;
     }
-    
-
     /**
      * END INIT COMMANDS
      */

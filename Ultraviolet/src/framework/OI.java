@@ -23,9 +23,8 @@ public class OI {
     
     //Left Joystick
     public static final Button manualCollect_but = new JoystickButton(driveStick_left, 1);               //While Held
-    public static final Button firstCollect_but = new JoystickButton(driveStick_left,4);
-    public static final Button secondCollect_but = new JoystickButton(driveStick_left,3);
-    public static final Button thirdCollect_but = new JoystickButton(driveStick_left,5);
+    public static final Button autoCollect_but = new JoystickButton(driveStick_left,3);
+    public static final Button cancelCollect_but = new JoystickButton(driveStick_left,2);
     public static final Button eBrakeFWD_but = new JoystickButton(driveStick_left, 6); //When Pressed
     public static final Button eBrakeREV_but = new JoystickButton(driveStick_left, 7); //When Pressed
     
@@ -41,9 +40,17 @@ public class OI {
     public static final Button compressor_but = new JoystickButton(driveStick_right, 11); //Toggle
 
     //Panel
+    public static final Button add_but = new JoystickButton(panel.getPanel(),Panel.BP1);
+    public static final Button subtract_but = new JoystickButton(panel.getPanel(),Panel.BM1);
+    public static final Button fire_but = new JoystickButton(panel.getPanel(),Panel.FIRE);
     public static final Button manualEject_panel_but = new JoystickButton(panel.getPanel(), Panel.DN);  //While Held
     public static final Button manualCollect_panel_but = new JoystickButton(panel.getPanel(), Panel.UP); //While Held 
-    public static final Button speedControl_panel_but = new JoystickButton(panel.getPanel(),Panel.O);  //While Held
+    public static final Button speedControl_panel_but = new JoystickButton(panel.getPanel(),Panel.SPD);  //While Held
+    
+    //Panel Camera Controls
+    public static final Button cam_init_but = new JoystickButton(panel.getPanel(),Panel.INIT);
+    public static final Button cam_disc_but = new JoystickButton(panel.getPanel(),Panel.CAN);
+    public static final Button cam_data_but = new JoystickButton(panel.getPanel(),Panel.HUP);
     
     //Use this constructor to setup up button schedulers for commands
     public OI() {
@@ -55,9 +62,10 @@ public class OI {
         manualCollect_panel_but.whileHeld(Init.manualCollect);
         
         //Auto Collect
-        firstCollect_but.whenPressed(Init.firstCollect);
-        secondCollect_but.whenPressed(Init.secondCollect);
-        thirdCollect_but.whenPressed(Init.thirdCollect);
+        autoCollect_but.whenPressed(Init.checkCollect);
+        cancelCollect_but.whenPressed(Init.cancelCollect);
+        add_but.whenReleased(Init.addBall);
+        subtract_but.whenReleased(Init.subtractBall);
 
         //Quick Turns
         quickLeftTurn_but.whenPressed(new QuickTurn(-90));
@@ -73,7 +81,11 @@ public class OI {
         eBrakeREV_but.whenPressed(new MoveEBrake(-HW.EBRAKE_INCREMENT));
         
         //Shooter Control
-        speedControl_panel_but.whileHeld(Init.panel_speedControl);
+        speedControl_panel_but.toggleWhenPressed(Init.panel_speedControl);
+        fire_but.whenPressed(Init.shootBall);
+        cam_data_but.toggleWhenPressed(Init.printCam);
+        cam_init_but.whenPressed(Init.connectCam);
+        cam_disc_but.whenPressed(Init.disconnectCam);
         
         /*
          * These next functions need the modified wpilibj Button.java

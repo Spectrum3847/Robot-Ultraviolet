@@ -2,11 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package commands.collector;
+package commands.collector.commandgroups;
 
 import commands.CommandBase;
-import commands.collector.second.MoveToLoader;
-import commands.collector.second.MoveToLowerMagazine;
+import commands.collector.MagazineSpacer;
+import commands.collector.MoveToLoader;
+import commands.collector.MoveToLowerMagazine;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -18,9 +19,16 @@ public class SecondCollect extends CommandGroup {
     public SecondCollect() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        requires(CommandBase.loader);
+        requires(CommandBase.magazine);
+        requires(CommandBase.chamber);        
+        setInterruptible(false);
+        
         addSequential(new MoveToLoader());
         addSequential(new MoveToLowerMagazine());
+        addSequential(new MagazineSpacer());
     }
+    
     
     public void end(){
         CommandBase.loader.addBall();
