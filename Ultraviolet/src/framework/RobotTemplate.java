@@ -35,10 +35,6 @@ public class RobotTemplate extends IterativeRobot {
         Disabled.periodic();
     }
     
-    public void disabledContinuous(){
-        Disabled.continuous();
-    }
-    
     public void autonomousInit() {
        Autonomous.init();
     }

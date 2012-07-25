@@ -38,28 +38,6 @@ public class HW {
     /**DRIVEBASE PID**/
     public static final double EBRAKE_KP = 10;
     public static final double EBRAKE_KI = 0.0;
-    
-    /**NON-DRIVEBASE MOTOR ASSIGNMENTS (PWM)**/
-    public static final int FRONT_SHOOTER_MOTOR = 1;
-    public static final int REAR_SHOOTER_MOTOR = 2;
-    public static final int LOADER_MOTOR = 3;
-    public static final int MAGAZINE_MOTOR = 4;
-    public static final int CHAMBER_MOTOR = 9;
-    
-    //Digital Input
-    public static final int PRESSURE_CHANNEl = 7;
-    
-    /**
-     * SOLENOID CHANNELS
-     */
-    public static final int RAINBOW = 1;
-    
- 
-    /**PID CONSTANTS**/
-    
-    /**DRIVEBASE PID**/
-    public static final double EBRAKE_KP = 10;
-    public static final double EBRAKE_KI = 0.0;
     public static final double EBRAKE_KD = 3;
     public static final double EBRAKE_MOVE_KP = 1;
     public static final double EBRAKE_MOVE_KI = 0.0;

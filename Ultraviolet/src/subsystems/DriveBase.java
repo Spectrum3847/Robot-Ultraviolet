@@ -35,13 +35,6 @@ public class DriveBase extends PIDSubsystem {
      private SendableGyro x_gyro;
      private double turnControllerOut = 0;
      private double tolerance = 1; //Percentage of error that the turn controller can be off and still be onTarget()
-     
-     
-
-     //Used for leftVelocity
-    public static double leftVelocity = 0;
-    private static double leftOldDistance = 0;
-    private static double leftOldTime = 0;
     
      public DriveBase(){
          super(HW.SKEW_KP,HW.SKEW_KI,HW.SKEW_KD);
@@ -218,21 +211,6 @@ public class DriveBase extends PIDSubsystem {
     
     public double getRight(){
         return jag_3.get();
-    }
-    
-    public double getLeftVelocity(){
-        if (leftOldTime > 0){
-            double newTime = Timer.getFPGATimestamp();
-            double newDistance = getLeftEncoder().getDistance();
-            leftVelocity =  (newDistance - leftOldDistance)/(newTime - leftOldTime);
-            leftOldDistance = newDistance;
-            leftOldTime = newTime;
-            return leftVelocity;
-        } else{
-            leftOldDistance = getLeftEncoder().getDistance();
-            leftOldTime = Timer.getFPGATimestamp();
-            return 0;
-        }
     }
     
     public void setArcade(double straight_speed, double turn_speed){
