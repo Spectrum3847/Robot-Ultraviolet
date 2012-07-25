@@ -55,9 +55,7 @@ public class Init {
     public static final Command connectCam = new ConnectToCamera();
     public static final Command disconnectCam = new DisconnectCamera();
     public static final Command printCam = new PrintCamData();
-
-
-    
+    public static final Command shootingMode = new shootingMode();
 
     //Jacks Commands
     public static final Command runCompressor = new RunCompressor();
