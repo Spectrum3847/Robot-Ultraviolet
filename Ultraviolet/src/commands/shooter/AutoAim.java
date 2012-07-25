@@ -41,14 +41,14 @@ public class AutoAim {
        if(inputArray.length!=8)
            return 0;
        
-       x0 = inputArray[0];
-       y0 = yPixelsTotal - (double)inputArray[1];
-       x1 = inputArray[2];
-       y1 = yPixelsTotal - (double)inputArray[3];
-       x2 = inputArray[4];
-       y2 = yPixelsTotal - (double)inputArray[5];
-       x3 = inputArray[6];
-       y3 = yPixelsTotal - (double)inputArray[7];
+       x0 = (double)inputArray[0];
+       y0 = (double)inputArray[1];
+       x1 = (double)inputArray[2];
+       y1 = (double)inputArray[3];
+       x2 = (double)inputArray[4];
+       y2 = (double)inputArray[5];
+       x3 = (double)inputArray[6];
+       y3 = (double)inputArray[7];
        
        if(x0 == 0 || y0 == 0 || x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0 || x3 == 0 || y3 == 0)
            return 0;
@@ -74,14 +74,14 @@ public class AutoAim {
         if(inputArray.length!=8)
            return 0;
        
-       x0 = inputArray[0];
-       y0 = yPixelsTotal - (double)inputArray[1];
-       x1 = inputArray[2];
-       y1 = yPixelsTotal - (double)inputArray[3];
-       x2 = inputArray[4];
-       y2 = yPixelsTotal - (double)inputArray[5];
-       x3 = inputArray[6];
-       y3 = yPixelsTotal - (double)inputArray[7];
+       x0 = (double)inputArray[0];
+       y0 = (double)inputArray[1];
+       x1 = (double)inputArray[2];
+       y1 = (double)inputArray[3];
+       x2 = (double)inputArray[4];
+       y2 = (double)inputArray[5];
+       x3 = (double)inputArray[6];
+       y3 = (double)inputArray[7];
        
        if(x0 == 0 || y0 == 0 || x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0 || x3 == 0 || y3 == 0)
            return 0;
@@ -105,14 +105,14 @@ public class AutoAim {
        if(inputArray.length!=8)
            return 0;
        
-       x0 = inputArray[0];
-       y0 = yPixelsTotal - (double)inputArray[1];
-       x1 = inputArray[2];
-       y1 = yPixelsTotal - (double)inputArray[3];
-       x2 = inputArray[4];
-       y2 = yPixelsTotal - (double)inputArray[5];
-       x3 = inputArray[6];
-       y3 = yPixelsTotal - (double)inputArray[7];
+       x0 = (double)inputArray[0];
+       y0 = (double)inputArray[1];
+       x1 = (double)inputArray[2];
+       y1 = (double)inputArray[3];
+       x2 = (double)inputArray[4];
+       y2 = (double)inputArray[5];
+       x3 = (double)inputArray[6];
+       y3 = (double)inputArray[7];
        
        double center = xFieldTotal / 2;
        double avg = (x0 + x1 + x2 + x3) / 4;
