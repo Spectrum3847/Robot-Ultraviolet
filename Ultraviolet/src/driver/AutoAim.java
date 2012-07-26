@@ -38,20 +38,34 @@ public class AutoAim {
        double yCutoff = belowHorizontal * yPixelsTotal / yFieldTotal;
        double yPixelsView = yPixelsTotal - yCutoff;
        
-       if(inputArray.length!=8)
+       if(inputArray.length!=8) {
            return 0;
+       }
        
        x0 = (double)inputArray[0];
-       y0 = yPixelsTotal - (double)inputArray[1];
+       y0 = yPixelsTotal - (double)inputArray[1]; //TL
        x1 = (double)inputArray[6];
-       y1 = yPixelsTotal - (double)inputArray[7];
+       y1 = yPixelsTotal - (double)inputArray[7]; //TR
        x2 = (double)inputArray[4];
-       y2 = yPixelsTotal - (double)inputArray[5];
+       y2 = yPixelsTotal - (double)inputArray[5]; //BR
        x3 = (double)inputArray[2];
-       y3 = yPixelsTotal - (double)inputArray[3];
+       y3 = yPixelsTotal - (double)inputArray[3]; //BL
        
-       if(x0 == 0 || y0 == 0 || x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0 || x3 == 0 || y3 == 0)
+              
+       y0 = (y0+y1)/2;
+       y1 = y0;
+       y2 = (y2/y3)/2;
+       y3 = y2;
+       
+       x0 = (x0+x3)/2;
+       x3 = x0;
+       x1 = (x1+x2)/2;
+       x2 = x1;
+       
+       
+       if(x0 == 0 || y0 == 0 || x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0 || x3 == 0 || y3 == 0) {
            return 0;
+       }
             
        targetAngle = yView * (y0 - y3) / yPixelsView;
        elevationAngle = yView * (y3 - yCutoff) / yPixelsView;
@@ -71,8 +85,9 @@ public class AutoAim {
        double yCutoff = belowHorizontal * yPixelsTotal / yFieldTotal;
        double yPixelsView = yPixelsTotal - yCutoff;
        
-        if(inputArray.length!=8)
+        if(inputArray.length!=8) {
            return 0;
+       }
        
         x0 = (double)inputArray[0];
        y0 = yPixelsTotal - (double)inputArray[1];
@@ -83,8 +98,21 @@ public class AutoAim {
        x3 = (double)inputArray[2];
        y3 = yPixelsTotal - (double)inputArray[3];
        
-       if(x0 == 0 || y0 == 0 || x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0 || x3 == 0 || y3 == 0)
+       /*
+       x0 = (x0+x1)/2;
+       x1 = x0;
+       x2 = (x2/x3)/2;
+       x3 = x2;
+       
+       y0 = (y0+y3)/2;
+       y3 = y0;
+       y1 = (y1+y2)/2;
+       y2 = y1;
+       */
+       
+       if(x0 == 0 || y0 == 0 || x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0 || x3 == 0 || y3 == 0) {
            return 0;
+       }
        
        targetAngle = yView * (y1 - y2) / yPixelsView;
        elevationAngle = yView * (y2 - yCutoff) / yPixelsView;
@@ -106,17 +134,21 @@ public class AutoAim {
       else if((right>100 || right < 0) && (left < 100 & left > 0)){
           return left;
       }
-      else if(right > 100 && left > 100)
-          return 10000;
-      else if(right < 0 && left < 0)
-          return 0;
-      else
-          return (getDistanceRight(inputArray) + getDistanceLeft(inputArray)) / 2.0;
+      else if(right > 100 && left > 100) {
+           return 10000;
+       }
+      else if(right < 0 && left < 0) {
+           return 0;
+       }
+      else {
+           return (getDistanceRight(inputArray) + getDistanceLeft(inputArray)) / 2.0;
+       }
    }
    
    public static double getOffsetAngle(int[] inputArray){
-       if(inputArray.length!=8)
+       if(inputArray.length!=8) {
            return 0;
+       }
        
        x0 = (double)inputArray[0];
        y0 = yPixelsTotal - (double)inputArray[1];
@@ -126,19 +158,33 @@ public class AutoAim {
        y2 = yPixelsTotal - (double)inputArray[5];
        x3 = (double)inputArray[2];
        y3 = yPixelsTotal - (double)inputArray[3];
+         
+       /*
+       x0 = (x0+x1)/2;
+       x1 = x0;
+       x2 = (x2/x3)/2;
+       x3 = x2;
+       
+       y0 = (y0+y3)/2;
+       y3 = y0;
+       y1 = (y1+y2)/2;
+       y2 = y1;
+       */
        
        double center = xPixelsTotal / 2.0;
        double avg = (x0 + x1 + x2 + x3) / 4.0;
        
-       if(avg==center)
+       if(avg==center) {
            return 0;
+       }
        else if(avg > center){
            return Math.toDegrees(xFieldTotal * (avg - center) / xPixelsTotal);
        }
        else if(avg < center){
            return Math.toDegrees(xFieldTotal * (avg - center) / xPixelsTotal);
        }
-       else
+       else {
            return 0;
+       }
    }
 }
