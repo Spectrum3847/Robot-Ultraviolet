@@ -182,19 +182,19 @@ public class AutoAim {
            return 0;
        }
        else if(distance < 12){//front of key
-           return 1910;
+           return 1910;//calibrate
        }
        else if(distance < 13){
-           return 1910;
+           return 1960; //?
        }
        else if(distance < 14){
-           return 1910;
+           return 2010; //?
        }
        else if(distance < 15){
-           return 1910;
+           return 2060;//?
        }
        else if(distance < 16){
-           return 1910;
+           return 2110;//?
        }
        else if(distance < 17){//back of key
            return 2170; //calibrate
@@ -227,19 +227,19 @@ public class AutoAim {
            return 2100;
        }
        else if(distance < 12){//front of key
-           return 2100;
+           return 2100;//calibrate
        }
        else if(distance < 13){
-           return 2350;
+           return 2140;//?
        }
        else if(distance < 14){
-           return 2350;
+           return 2180;//?
        }
        else if(distance < 15){
-           return 2350;
+           return 2220;//?
        }
        else if(distance < 16){
-           return 2350;
+           return 2280;//?
        }
        else if(distance < 17){//back of key
            return 2350; //calibrate
