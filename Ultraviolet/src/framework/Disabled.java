@@ -19,6 +19,7 @@ public class Disabled {
         Init.stopGyroDrift.start();
         CommandBase.pneumatics.stopCompressor();        
         CommandBase.drivebase.reset(); 
+        CommandBase.cam.disconnect();
     }
     
 

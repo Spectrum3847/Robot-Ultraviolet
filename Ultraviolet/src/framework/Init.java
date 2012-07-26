@@ -55,13 +55,11 @@ public class Init {
     public static final Command connectCam = new ConnectToCamera();
     public static final Command disconnectCam = new DisconnectCamera();
     public static final Command printCam = new PrintCamData();
-    
+    public static final Command shootingMode = new shootingMode();
     
     //Auton Commands
-    public static final Command auton_fire = new AutonCollect();
+    public static final Command auton_fire = new AutonFire();
 
-
-    
 
     //Jacks Commands
     public static final Command runCompressor = new RunCompressor();

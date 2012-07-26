@@ -16,20 +16,22 @@ import framework.OI;
  *
  * @author root
  */
-public class AutonCollect extends CommandGroup {
+public class AutonFire extends CommandGroup {
     
-    public AutonCollect() {
+    public AutonFire() {
             // Use requires() here to declare subsystem dependencies
             // eg. requires(chassis);
-            requires(CommandBase.loader);
-            requires(CommandBase.magazine);
-            requires(CommandBase.chamber);
-            requires(CommandBase.shooter);
             try {
             addSequential(new WaitCommand(SmartDashboard.getInt("First Delay")));
-            addSequential(Init.shootSecond);
-            addSequential(new WaitCommand(SmartDashboard.getInt("Second Delay")));
-            addSequential(Init.shootFirst);
+            addSequential(new ShootSecond());
+            addSequential(new WaitCommand(SmartDashboard.getInt("Second Delay")-SmartDashboard.getInt("First Delay")));
+            addSequential(new ShootFirst());
+            addSequential(new FirstCollect());
+            addSequential(new WaitCommand(0.5));
+            addSequential(new ShootFirst());
+            addSequential(new FirstCollect());
+            addSequential(new WaitCommand(0.5));
+            addSequential(new ShootFirst());
         } catch (NetworkTableKeyNotDefined ex) {
             System.out.println("Unable to Initialize AutonCollect");
         }

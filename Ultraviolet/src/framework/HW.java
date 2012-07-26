@@ -10,6 +10,10 @@ import edu.wpi.first.wpilibj.CANJaguar;
  * floating around.
  */
 public class HW {
+    
+    /**AUTON DELAY SETTINGS**/
+    public static final int FIRST_DELAY = 5;
+    public static final int SECOND_DELAY = 3;
 
     /**DRIVEBASE MOTOR ASSIGNMENTS**/
     public static final int FRONT_LDRIVE_MOTOR = 5;
