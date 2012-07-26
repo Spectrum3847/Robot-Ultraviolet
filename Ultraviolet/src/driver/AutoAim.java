@@ -119,16 +119,16 @@ public class AutoAim {
    public static double getDistance(int[] inputArray){
       double left = getDistanceLeft(inputArray);
       double right = getDistanceRight(inputArray);
-      if((left > 100 || left < 0) && (right < 100 && right > 0)){
+      if((left > 20 || left < 0) && (right < 20 && right > 0)){
           return right;
       }
-      else if((right>100 || right < 0) && (left < 100 & left > 0)){
+      else if((right>20 || right < 0) && (left < 20 & left > 0)){
           return left;
       }
-      else if(right > 100 && left > 100)
+      else if(right > 20 && left > 20)
           return 10000;
       else if(right < 0 && left < 0)
-          return 0;
+          return -10000;
       else
           return (getDistanceRight(inputArray) + getDistanceLeft(inputArray)) / 2.0;
    }
