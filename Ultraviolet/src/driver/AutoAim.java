@@ -161,7 +161,7 @@ public class AutoAim {
            return 0;
    }
    
-   public static double getRangeLow(int[] inputArray){
+   public static double getRangeLow(int[] inputArray){ //calibrate all distances
        double distance = getDistance(inputArray);
        if(distance<0){
            return 0;
@@ -181,17 +181,26 @@ public class AutoAim {
        else if(distance < 11){
            return 0;
        }
-       else if(distance < 12){
-           return 0;
+       else if(distance < 12){//front of key
+           return 1910;
        }
        else if(distance < 13){
-           return 0;
+           return 1910;
        }
        else if(distance < 14){
-           return 0;
+           return 1910;
        }
        else if(distance < 15){
-           return 0;
+           return 1910;
+       }
+       else if(distance < 16){
+           return 1910;
+       }
+       else if(distance < 17){//back of key
+           return 2170; //calibrate
+       }
+       else if(distance < 18){
+           return 2170;
        }
        else
            return 0;
@@ -206,28 +215,37 @@ public class AutoAim {
            return 3600;
        }
        else if(distance<8){
-           return 0;
+           return 2100;
        }
        else if(distance < 9){
-           return 0;
+           return 2100;
        }
        else if(distance < 10){
-           return 0;
+           return 2100;
        }
        else if(distance < 11){
-           return 0;
+           return 2100;
        }
-       else if(distance < 12){
-           return 0;
+       else if(distance < 12){//front of key
+           return 2100;
        }
        else if(distance < 13){
-           return 0;
+           return 2350;
        }
        else if(distance < 14){
-           return 0;
+           return 2350;
        }
        else if(distance < 15){
-           return 0;
+           return 2350;
+       }
+       else if(distance < 16){
+           return 2350;
+       }
+       else if(distance < 17){//back of key
+           return 2350; //calibrate
+       }
+       else if(distance < 18){
+           return 3600;
        }
        else
            return 3600;
