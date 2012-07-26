@@ -160,4 +160,76 @@ public class AutoAim {
        else
            return 0;
    }
+   
+   public static double getRangeLow(int[] inputArray){
+       double distance = getDistance(inputArray);
+       if(distance<0){
+           return 0;
+       }
+       else if(distance > 20){
+           return 3600;
+       }
+       else if(distance<8){
+           return 0;
+       }
+       else if(distance < 9){
+           return 0;
+       }
+       else if(distance < 10){
+           return 0;
+       }
+       else if(distance < 11){
+           return 0;
+       }
+       else if(distance < 12){
+           return 0;
+       }
+       else if(distance < 13){
+           return 0;
+       }
+       else if(distance < 14){
+           return 0;
+       }
+       else if(distance < 15){
+           return 0;
+       }
+       else
+           return 0;
+   }
+   
+   public static double getRangeHigh(int[] inputArray){
+       double distance = getDistance(inputArray);
+       if(distance<0){
+           return 0;
+       }
+       else if(distance > 20){
+           return 3600;
+       }
+       else if(distance<8){
+           return 0;
+       }
+       else if(distance < 9){
+           return 0;
+       }
+       else if(distance < 10){
+           return 0;
+       }
+       else if(distance < 11){
+           return 0;
+       }
+       else if(distance < 12){
+           return 0;
+       }
+       else if(distance < 13){
+           return 0;
+       }
+       else if(distance < 14){
+           return 0;
+       }
+       else if(distance < 15){
+           return 0;
+       }
+       else
+           return 3600;
+   }
 }

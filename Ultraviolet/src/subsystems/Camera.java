@@ -75,6 +75,24 @@ public class Camera extends Subsystem {
         }
     }
     
+    public double getRangeLow(){
+        if(isConnected() && points != null){
+            return AutoAim.getRangeLow(points);
+        }
+        else{
+            return 9999;
+        }
+    }
+    
+    public double getRangeHigh(){
+        if(isConnected() && points != null){
+            return AutoAim.getRangeHigh(points);
+        }
+        else{
+            return 9999;
+        }
+    }
+    
     public void update(){
         points = getData();
     }

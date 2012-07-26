@@ -34,6 +34,8 @@ public class SpectrumDashboard {
             SmartDashboard.putBoolean("Compressor Running",Init.runCompressor.isRunning());
             SmartDashboard.putDouble("Distance", 0);
             SmartDashboard.putDouble("Offset", 0);
+            SmartDashboard.putDouble("Range-", 0);
+            SmartDashboard.putDouble("Range+", 3600);
             SmartDashboard.putInt("First Delay",4);
             SmartDashboard.putInt("Second Delay",6);
             //Intialize Single calls here, useful for PID data
