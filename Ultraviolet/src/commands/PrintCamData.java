@@ -27,7 +27,7 @@ public class PrintCamData extends CommandBase {
         double offset = cam.getOffset();
         double rangeLow = cam.getRangeLow();
         double rangeHigh = cam.getRangeHigh();
-        System.out.println("Distance: " + distance + " : Offset: " + offset + " : Range: " + rangeLow + " - " + rangeHigh);
+        //System.out.println("Distance: " + distance + " : Offset: " + offset + " : Range: " + rangeLow + " - " + rangeHigh);
         SmartDashboard.putDouble("Distance", distance);
         SmartDashboard.putDouble("Offset", offset);
         SmartDashboard.putDouble("Range-", rangeLow);
