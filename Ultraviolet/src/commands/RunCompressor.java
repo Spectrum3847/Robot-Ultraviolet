@@ -4,6 +4,9 @@
  */
 package commands;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import framework.Init;
+
 /**
  *
  * @author JAG
@@ -21,6 +24,7 @@ public class RunCompressor extends CommandBase {
      */
     protected void initialize() {
         CommandBase.pneumatics.runCompressor();
+        SmartDashboard.putBoolean("Compressor Running",Init.runCompressor.isRunning());
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -35,6 +39,7 @@ public class RunCompressor extends CommandBase {
     // Called once after isFinished returns true
     protected void end() {
         CommandBase.pneumatics.stopCompressor();
+        SmartDashboard.putBoolean("Compressor Running",Init.runCompressor.isRunning());
     }
 
     // Called when another command which requires one or more of the same

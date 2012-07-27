@@ -5,6 +5,7 @@
 package commands;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import framework.Init;
 
 /**
@@ -24,6 +25,7 @@ public class shootingMode extends CommandBase {
     protected void initialize() {
         Init.connectCam.start();
         oldTime = Timer.getFPGATimestamp();
+        SmartDashboard.putBoolean("Shooting Mode", true);
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -38,12 +40,15 @@ public class shootingMode extends CommandBase {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return false;//return !CommandBase.cam.isConnected();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-        Init.cancelCollect.start();
+        Init.disconnectCam.start();
+        SmartDashboard.putBoolean("Shooting Mode", false);
+        SmartDashboard.putDouble("Distance", 99999);
+        SmartDashboard.putDouble("Offset", 99999);
     }
 
     // Called when another command which requires one or more of the same

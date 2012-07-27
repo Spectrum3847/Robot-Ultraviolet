@@ -9,10 +9,13 @@ package commands;
  * @author root
  */
 public class ConnectToCamera extends CommandBase {
-    
+
+    public static final boolean DEBUG = false;
+
     public ConnectToCamera() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        requires(CommandBase.cam);
     }
 
     // Called just before this Command runs the first time
@@ -31,9 +34,11 @@ public class ConnectToCamera extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        if (cam.isConnected()){
-            System.out.println("Camera Connected");
-        } 
+        if (DEBUG) {
+            if (cam.isConnected()) {
+                System.out.println("Camera Connected");
+            }
+        }
     }
 
     // Called when another command which requires one or more of the same

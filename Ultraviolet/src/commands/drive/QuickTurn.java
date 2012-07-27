@@ -5,7 +5,7 @@
 package commands.drive;
 
 import commands.CommandBase;
-import framework.HW;
+import framework.Init;
 
 /**
  * uses to quickly turn a certain amount
@@ -20,13 +20,11 @@ public class QuickTurn extends CommandBase {
     public QuickTurn(double deg) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-        requires(drivebase);
         degrees = deg;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-        //drivebase.setPID(HW.TURN_KP, HW.TURN_KI, HW.TURN_KD);       //Change
         drivebase.enableTurnController();   
         double setpoint = drivebase.getSetpoint();
         drivebase.getController().setSetpoint(setpoint + degrees);
@@ -34,12 +32,16 @@ public class QuickTurn extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-        new TurnControlDrive().start();
+        if (!Init.turnControlDrive.isRunning()){
+            Init.turnControlDrive.start();
+        }
+        //Add time to the turn controller to allow it to hit's it mark.
+        Init.turnControlDrive.addTime(.5);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true

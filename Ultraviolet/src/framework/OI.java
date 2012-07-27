@@ -23,19 +23,19 @@ public class OI {
     
     //Left Joystick
     public static final Button manualCollect_but = new JoystickButton(driveStick_left, 1);               //While Held
-    public static final Button eBrakeFWD_but = new JoystickButton(driveStick_left, 6); //When Pressed
-    public static final Button eBrakeREV_but = new JoystickButton(driveStick_left, 7); //When Pressed
+    //public static final Button eBrakeFWD_but = new JoystickButton(driveStick_left, 6); //When Pressed
+    //public static final Button eBrakeREV_but = new JoystickButton(driveStick_left, 7); //When Pressed
     public static final Button autoCollect_but = new JoystickButton(driveStick_left,3);
     public static final Button cancelCollect_but = new JoystickButton(driveStick_left,2);
     
     //Right Joysctick
     public static final Button manualEject_but = new JoystickButton(driveStick_right, 1);               //While Held
     public static final Button eBrake_but = new JoystickButton(driveStick_right, 2);      //Toggle
-    public static final Button quickLeftTurn_but = new JoystickButton(driveStick_right, 4); //when pressed
-    public static final Button quickRightTurn_but = new JoystickButton(driveStick_right, 5); //when pressed
+    //public static final Button quickLeftTurn_but = new JoystickButton(driveStick_right, 4); //when pressed
+    //public static final Button quickRightTurn_but = new JoystickButton(driveStick_right, 5); //when pressed
     public static final Button tankDrive_but = new JoystickButton(driveStick_right, 6);  //When Pressed
     public static final Button haloDrive_but = new JoystickButton(driveStick_right, 7);   //When Pressed
-    public static final Button pidHaloDrive_but = new JoystickButton(driveStick_right, 8);  //When Pressed
+    //public static final Button pidHaloDrive_but = new JoystickButton(driveStick_right, 8);  //When Pressed
     public static final Button jacks_but = new JoystickButton(driveStick_right, 10);    //Toggle
     public static final Button compressor_but = new JoystickButton(driveStick_right, 11); //Toggle
 
@@ -69,17 +69,17 @@ public class OI {
         subtract_but.whenReleased(Init.subtractBall);
 
         //Quick Turns
-        quickLeftTurn_but.whenPressed(new QuickTurn(-90));
-        quickRightTurn_but.whenPressed(new QuickTurn(90));
+        //quickLeftTurn_but.whenPressed(new QuickTurn(-90));
+        //quickRightTurn_but.whenPressed(new QuickTurn(90));
 
         //Button for Drive Modes
         tankDrive_but.whenPressed(Init.manualTankDrive);
         haloDrive_but.whenPressed(Init.haloDrive);
-        pidHaloDrive_but.whenPressed(Init.pidHaloDrive);
+        //pidHaloDrive_but.whenPressed(Init.pidHaloDrive);
     
         //eBrake Adjustments
-        eBrakeFWD_but.whenPressed(new MoveEBrake(HW.EBRAKE_INCREMENT));
-        eBrakeREV_but.whenPressed(new MoveEBrake(-HW.EBRAKE_INCREMENT));
+        //eBrakeFWD_but.whenPressed(new MoveEBrake(HW.EBRAKE_INCREMENT));
+        //eBrakeREV_but.whenPressed(new MoveEBrake(-HW.EBRAKE_INCREMENT));
         
         //Shooter Control
         speedControl_panel_but.toggleWhenPressed(Init.panel_speedControl);

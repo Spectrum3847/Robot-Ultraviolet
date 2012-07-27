@@ -4,6 +4,7 @@
  */
 package subsystems;
 
+import driver.SpectrumDrive;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SendableGyro;
@@ -19,7 +20,7 @@ public class DriveBase extends PIDSubsystem {
      //Drive Motor Controller
      private Jaguar jag_1,jag_2,jag_3,jag_4;
      private Jaguar[] jag_arr;
-     private RobotDrive robotDrive;
+     private SpectrumDrive spectrumDrive;
      
      //Drive Encoders
      private Encoder left_encoder;
@@ -41,8 +42,8 @@ public class DriveBase extends PIDSubsystem {
      public DriveBase(){
          super(HW.SKEW_KP,HW.SKEW_KI,HW.SKEW_KD);
          setJaguars();
-         robotDrive = new RobotDrive(jag_1, jag_2, jag_3, jag_4);
-         robotDrive.setMaxOutput(1.0);
+         spectrumDrive = new SpectrumDrive(jag_1, jag_2, jag_3, jag_4);
+         spectrumDrive.setMaxOutput(1.0);
          left_encoder = new Encoder(HW.LDRIVE_ENCODER_A,HW.LDRIVE_ENCODER_B,true,CounterBase.EncodingType.k1X);
          left_encoder.setDistancePerPulse(HW.DRIVEBASE_PULSE);
          right_encoder = new Encoder(HW.RDRIVE_ENCODER_A,HW.RDRIVE_ENCODER_B,true,CounterBase.EncodingType.k1X);
@@ -196,24 +197,15 @@ public class DriveBase extends PIDSubsystem {
     
     
     public void setLeft(double left_speed){
-        robotDrive.tankDrive(left_speed, jag_3.get());
-            //jag_1.set(left_speed);
-            //jag_2.set(left_speed);
+        spectrumDrive.tankDrive(left_speed, jag_3.get());
     }
     
     public void setRight(double right_speed){
-        robotDrive.tankDrive(jag_1.get(), right_speed);
-           // jag_3.set(-1*right_speed);
-            //jag_4.set(-1*right_speed);
+        spectrumDrive.tankDrive(jag_1.get(), right_speed);
     }
     
     public void setArcade(double straight_speed, double turn_speed){
-        if (getController().isEnable()){
-            robotDrive.arcadeDrive(straight_speed, turnControllerOut,false);
-        }
-        else {
-            robotDrive.arcadeDrive(straight_speed, turn_speed, true);
-        }   
+            spectrumDrive.arcadeDrive(straight_speed, turn_speed, true);
     }
     
     public void turnLeft(double speed){

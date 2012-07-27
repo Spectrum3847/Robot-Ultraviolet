@@ -31,8 +31,7 @@ public class Init {
     public static final LeftElectronicBrake leftBrake = new LeftElectronicBrake(HW.EBRAKE_KP,HW.EBRAKE_KI,HW.DRIVEBASE_KD);
     public static final RightElectronicBrake rightBrake = new RightElectronicBrake(HW.EBRAKE_KP,HW.EBRAKE_KI,HW.DRIVEBASE_KD);
     public static final EBrake eBrake = new EBrake();
-    public static final QuickTurn quickLeft90 = new QuickTurn(-90);
-    public static final QuickTurn quickRight90 = new QuickTurn (90);
+    public static final TurnControlDrive turnControlDrive = new TurnControlDrive();
     public static final StopGyroDrift stopGyroDrift = new StopGyroDrift();
     
     //Collect Commands

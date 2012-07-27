@@ -28,6 +28,11 @@ public class AutoAim {
    public static double beta;
    public static double gamma;
    
+   
+   //experimental
+   public static double yDistance;
+   //
+   
    //results
    public static double r;
    
@@ -50,10 +55,17 @@ public class AutoAim {
        x3 = (double)inputArray[2];
        y3 = yPixelsTotal - (double)inputArray[3];
        
+       yDistance = y0 - y3;
+       //experimental
+       double xTemp = Math.abs(x0 - x3);
+       double yHyp = Math.sqrt(xTemp*xTemp + yDistance*yDistance);
+       yDistance = yHyp;
+       //
+       
        if(x0 == 0 || y0 == 0 || x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0 || x3 == 0 || y3 == 0)
            return 0;
             
-       targetAngle = yView * (y0 - y3) / yPixelsView;
+       targetAngle = yView * (yDistance) / yPixelsView;
        elevationAngle = yView * (y3 - yCutoff) / yPixelsView;
        alpha = Math.PI/2.0 - elevationAngle;
        gamma = Math.PI/2.0 + elevationAngle;
@@ -74,7 +86,7 @@ public class AutoAim {
         if(inputArray.length!=8)
            return 0;
        
-        x0 = (double)inputArray[0];
+       x0 = (double)inputArray[0];
        y0 = yPixelsTotal - (double)inputArray[1];
        x1 = (double)inputArray[6];
        y1 = yPixelsTotal - (double)inputArray[7];
@@ -83,10 +95,17 @@ public class AutoAim {
        x3 = (double)inputArray[2];
        y3 = yPixelsTotal - (double)inputArray[3];
        
+       yDistance = y1 - y2;
+        //experimental
+       double xTemp = Math.abs(x0 - x3);
+       double yHyp = Math.sqrt(xTemp*xTemp + yDistance*yDistance);
+       yDistance = yHyp;
+       //
+       
        if(x0 == 0 || y0 == 0 || x1 == 0 || y1 == 0 || x2 == 0 || y2 == 0 || x3 == 0 || y3 == 0)
            return 0;
        
-       targetAngle = yView * (y1 - y2) / yPixelsView;
+       targetAngle = yView * (yDistance) / yPixelsView;
        elevationAngle = yView * (y2 - yCutoff) / yPixelsView;
        alpha = Math.PI/2.0 - elevationAngle;
        gamma = Math.PI/2.0 + elevationAngle;
@@ -100,16 +119,16 @@ public class AutoAim {
    public static double getDistance(int[] inputArray){
       double left = getDistanceLeft(inputArray);
       double right = getDistanceRight(inputArray);
-      if((left > 100 || left < 0) && (right < 100 && right > 0)){
+      if((left > 20 || left < 0) && (right < 20 && right > 0)){
           return right;
       }
-      else if((right>100 || right < 0) && (left < 100 & left > 0)){
+      else if((right>20 || right < 0) && (left < 20 & left > 0)){
           return left;
       }
-      else if(right > 100 && left > 100)
+      else if(right > 20 && left > 20)
           return 10000;
       else if(right < 0 && left < 0)
-          return 0;
+          return -10000;
       else
           return (getDistanceRight(inputArray) + getDistanceLeft(inputArray)) / 2.0;
    }
@@ -140,5 +159,95 @@ public class AutoAim {
        }
        else
            return 0;
+   }
+   
+   public static double getRangeLow(int[] inputArray){ //calibrate all distances
+       double distance = getDistance(inputArray);
+       if(distance<0){
+           return 0;
+       }
+       else if(distance > 20){
+           return 3600;
+       }
+       else if(distance<8){
+           return 0;
+       }
+       else if(distance < 9){
+           return 0;
+       }
+       else if(distance < 10){
+           return 0;
+       }
+       else if(distance < 11){
+           return 0;
+       }
+       else if(distance < 12){//front of key
+           return 1910;//calibrate
+       }
+       else if(distance < 13){
+           return 1960; //?
+       }
+       else if(distance < 14){
+           return 2010; //?
+       }
+       else if(distance < 15){
+           return 2060;//?
+       }
+       else if(distance < 16){
+           return 2110;//?
+       }
+       else if(distance < 17){//back of key
+           return 2170; //calibrate
+       }
+       else if(distance < 18){
+           return 2170;
+       }
+       else
+           return 0;
+   }
+   
+   public static double getRangeHigh(int[] inputArray){
+       double distance = getDistance(inputArray);
+       if(distance<0){
+           return 0;
+       }
+       else if(distance > 20){
+           return 3600;
+       }
+       else if(distance<8){
+           return 2100;
+       }
+       else if(distance < 9){
+           return 2100;
+       }
+       else if(distance < 10){
+           return 2100;
+       }
+       else if(distance < 11){
+           return 2100;
+       }
+       else if(distance < 12){//front of key
+           return 2100;//calibrate
+       }
+       else if(distance < 13){
+           return 2140;//?
+       }
+       else if(distance < 14){
+           return 2180;//?
+       }
+       else if(distance < 15){
+           return 2220;//?
+       }
+       else if(distance < 16){
+           return 2280;//?
+       }
+       else if(distance < 17){//back of key
+           return 2350; //calibrate
+       }
+       else if(distance < 18){
+           return 3600;
+       }
+       else
+           return 3600;
    }
 }
