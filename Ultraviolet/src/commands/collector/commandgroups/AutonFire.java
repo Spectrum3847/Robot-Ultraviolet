@@ -33,7 +33,7 @@ public class AutonFire extends CommandGroup {
             addSequential(new WaitCommand(0.5));
             addSequential(new ShootFirst());
         } catch (NetworkTableKeyNotDefined ex) {
-            System.out.println("Unable to Initialize AutonCollect");
+            System.out.println("Unable to Initialize AutonFire");
         }
     }
 

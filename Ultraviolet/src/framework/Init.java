@@ -57,8 +57,6 @@ public class Init {
     public static final Command printCam = new PrintCamData();
     public static final Command shootingMode = new shootingMode();
     
-    //Auton Commands
-    public static final Command auton_fire = new AutonFire();
 
 
     //Jacks Commands
