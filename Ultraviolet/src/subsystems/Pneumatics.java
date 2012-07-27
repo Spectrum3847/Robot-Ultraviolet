@@ -41,6 +41,10 @@ public class Pneumatics extends Subsystem {
     public void stopCompressor(){
         compressor.stop();
     }
+    
+    public boolean isCompressor(){
+        return compressor.enabled();
+    }
 
     protected void initDefaultCommand() {
     }

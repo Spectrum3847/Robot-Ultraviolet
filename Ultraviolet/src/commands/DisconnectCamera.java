@@ -13,6 +13,7 @@ public class DisconnectCamera extends CommandBase {
     public DisconnectCamera() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        
     }
 
     // Called just before this Command runs the first time
@@ -31,7 +32,7 @@ public class DisconnectCamera extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        System.out.println("Disconnected From Camera");
+        //System.out.println("Disconnected From Camera");
     }
 
     // Called when another command which requires one or more of the same

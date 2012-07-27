@@ -41,6 +41,7 @@ public class PIDHaloDrive extends CommandBase {
         } else {
             drivebase.enableTurnController();   //Enable if we weren't already
             drivebase.setArcade(straightStick, drivebase.getPIDTurnOutput()); //turn is controlled by the PID controller to keep the robot straight
+            //System.out.println("Turning = " + drivebase.getPIDTurnOutput() + ", Setpoint: " + drivebase.getSetpoint() + ", Error: " + drivebase.getController().getError() + ", GetP: " + drivebase.getController().getP());
         }
     }
 

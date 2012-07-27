@@ -18,7 +18,7 @@ import javax.microedition.io.SocketConnection;
  */
 public class CamData {
     
-    private static final boolean DEBUG = true;
+    private static final boolean DEBUG = false;
     private static String url;
     private static SocketConnection clientSocket;
     public static InputStream is;

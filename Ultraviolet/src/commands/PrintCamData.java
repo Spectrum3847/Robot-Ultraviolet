@@ -17,6 +17,7 @@ public class PrintCamData extends CommandBase {
     public PrintCamData() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+        
     }
 
     // Called just before this Command runs the first time
@@ -24,7 +25,7 @@ public class PrintCamData extends CommandBase {
         cam.update();
         double distance = cam.getDistance();
         double offset = cam.getOffset();
-        System.out.println("Distance: " + distance + " : Offset: " + offset);
+        //System.out.println("Distance: " + distance + " : Offset: " + offset);
         SmartDashboard.putDouble("Distance", distance);
         SmartDashboard.putDouble("Offset", offset);
     }

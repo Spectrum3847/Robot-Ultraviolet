@@ -13,7 +13,7 @@ import framework.HW;
  */
 public class TurnControlDrive extends CommandBase {
 
-    private double timeOut = 3; //Number of second before command exits automatically 
+    private double timeOut = .1; //Number of second before command exits automatically 
 
     public TurnControlDrive() {
         // Use requires() here to declare subsystem dependencies
@@ -29,9 +29,9 @@ public class TurnControlDrive extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
         if (drivebase.getSetpoint() < 0) {                           //negative is left
-            drivebase.setPID(HW.TURN_LEFT_KP, HW.TURN_LEFT_KI, HW.TURN_LEFT_KD);
+            //drivebase.setPID(HW.TURN_LEFT_KP, HW.TURN_LEFT_KI, HW.TURN_LEFT_KD);
         } else if (drivebase.getSetpoint() > 0) {                                        //Right is positive
-            drivebase.setPID(HW.TURN_RIGHT_KP, HW.TURN_RIGHT_KI, HW.TURN_RIGHT_KD);
+            //drivebase.setPID(HW.TURN_RIGHT_KP, HW.TURN_RIGHT_KI, HW.TURN_RIGHT_KD);
         } 
         drivebase.setArcade(0, drivebase.getPIDTurnOutput());
     }
@@ -43,7 +43,7 @@ public class TurnControlDrive extends CommandBase {
 
     // Called once after isFinished returns true
     protected void end() {
-        drivebase.setPID(HW.SKEW_KP, HW.SKEW_KI, HW.SKEW_KD);       //Reset to drive strait values
+        //drivebase.setPID(HW.SKEW_KP, HW.SKEW_KI, HW.SKEW_KD);       //Reset to drive strait values
         CommandBase.drivebase.reset();
     }
 
@@ -51,5 +51,23 @@ public class TurnControlDrive extends CommandBase {
     // subsystems is scheduled to run
     protected void interrupted() {
         end();
+    }
+    
+    /**
+     * Returns whether or not the {@link Command#timeSinceInitialized() timeSinceInitialized()}
+     * method returns a number which is greater than or equal to the timeout for the command.
+     * If there is no timeout, this will always return false.
+     * @return whether the time has expired
+     */
+    protected synchronized boolean isTimedOut() {
+        return timeOut != -1 && timeSinceInitialized() >= timeOut;
+    }
+    
+    /**
+     * Add Time to the timeout
+     * @param time 
+     */
+    public void addTime(double time){
+        timeOut += time;
     }
 }
