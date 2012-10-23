@@ -7,6 +7,7 @@ package commands.collector.commandgroups;
 import commands.CommandBase;
 import commands.collector.MoveToChamber;
 import commands.collector.MoveToLoader;
+import commands.collector.MoveToMagazineFirstContingency;
 import commands.collector.MoveToMagazine;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -26,14 +27,16 @@ public class FirstCollect extends CommandGroup {
         setInterruptible(false);
         
         addSequential(new MoveToLoader());
-        addSequential(new MoveToMagazine());
+        addSequential(new MoveToMagazineFirstContingency());
         addSequential(new MoveToChamber());
     }
     
     
     
     public void end(){
-       CommandBase.loader.addBall();
+        if(CommandBase.chamber.isOccupied()){
+            CommandBase.loader.addBall();
+        }
     }
     
     public void interrupted(){

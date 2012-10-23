@@ -64,7 +64,10 @@ public class OI {
         
         //Auto Collect
         autoCollect_but.whenPressed(Init.checkCollect);
-        cancelCollect_but.whenPressed(Init.cancelCollect);
+        cancelCollect_but.cancelWhenPressed(Init.firstCollect);
+        cancelCollect_but.cancelWhenPressed(Init.secondCollect);
+        cancelCollect_but.cancelWhenPressed(Init.thirdCollect);
+        cancelCollect_but.whenPressed(Init.subtractBall);
         add_but.whenReleased(Init.addBall);
         subtract_but.whenReleased(Init.subtractBall);
 
