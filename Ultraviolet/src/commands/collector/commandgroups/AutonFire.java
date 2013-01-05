@@ -7,7 +7,6 @@ package commands.collector.commandgroups;
 import commands.CommandBase;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.command.WaitCommand;
-import edu.wpi.first.wpilibj.networktables.NetworkTableKeyNotDefined;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import framework.Init;
 import framework.OI;
@@ -21,20 +20,16 @@ public class AutonFire extends CommandGroup {
     public AutonFire() {
             // Use requires() here to declare subsystem dependencies
             // eg. requires(chassis);
-            try {
-            addSequential(new WaitCommand(SmartDashboard.getInt("First Delay")));
-            addSequential(new ShootSecond());
-            addSequential(new WaitCommand(SmartDashboard.getInt("Second Delay")-SmartDashboard.getInt("First Delay")));
-            addSequential(new ShootFirst());
-            addSequential(new FirstCollect());
-            addSequential(new WaitCommand(0.5));
-            addSequential(new ShootFirst());
-            addSequential(new FirstCollect());
-            addSequential(new WaitCommand(0.5));
-            addSequential(new ShootFirst());
-        } catch (NetworkTableKeyNotDefined ex) {
-            System.out.println("Unable to Initialize AutonFire");
-        }
+        addSequential(new WaitCommand(SmartDashboard.getNumber("First Delay")));
+        addSequential(new ShootSecond());
+        addSequential(new WaitCommand(SmartDashboard.getNumber("Second Delay")-SmartDashboard.getNumber("First Delay")));
+        addSequential(new ShootFirst());
+        addSequential(new FirstCollect());
+        addSequential(new WaitCommand(0.5));
+        addSequential(new ShootFirst());
+        addSequential(new FirstCollect());
+        addSequential(new WaitCommand(0.5));
+        addSequential(new ShootFirst());
     }
 
     // Called just before this Command runs the first time

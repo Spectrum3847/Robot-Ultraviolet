@@ -47,8 +47,8 @@ public class shootingMode extends CommandBase {
     protected void end() {
         Init.disconnectCam.start();
         SmartDashboard.putBoolean("Shooting Mode", false);
-        SmartDashboard.putDouble("Distance", 99999);
-        SmartDashboard.putDouble("Offset", 99999);
+        SmartDashboard.putNumber("Distance", 99999);
+        SmartDashboard.putNumber("Offset", 99999);
     }
 
     // Called when another command which requires one or more of the same

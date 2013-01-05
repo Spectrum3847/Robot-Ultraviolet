@@ -7,7 +7,6 @@ package subsystems;
 import driver.SpectrumDrive;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.PIDSubsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SendableGyro;
 import framework.HW;
 import framework.Init;
 
@@ -32,7 +31,7 @@ public class DriveBase extends PIDSubsystem {
      
      //Drive X Gyro
      private AnalogChannel x_gyro_raw;
-     private SendableGyro x_gyro;
+     private Gyro x_gyro;
      private double turnControllerOut = 0;
      private double tolerance = 1; //Percentage of error that the turn controller can be off and still be onTarget()
      
@@ -50,10 +49,10 @@ public class DriveBase extends PIDSubsystem {
          right_encoder.setDistancePerPulse(HW.DRIVEBASE_PULSE);
          x_gyro_raw = new AnalogChannel(HW.X_GYRO_CHANNEL);
          x_gyro_raw.setAverageBits(2); //Get 4 samples of gyro data and average them for the raw output
-         x_gyro = new SendableGyro(x_gyro_raw);
+         x_gyro = new Gyro(x_gyro_raw);
          this.getController().setOutputRange(-1, 1);
          this.getController().setInputRange(-360, 360);
-         this.getController().setTolerance(tolerance);
+         this.getController().setAbsoluteTolerance(tolerance);
     }
     
     

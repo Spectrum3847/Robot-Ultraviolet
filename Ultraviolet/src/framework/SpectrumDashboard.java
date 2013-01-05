@@ -33,12 +33,12 @@ public class SpectrumDashboard {
             SmartDashboard.putBoolean("Jacks Down", CommandBase.pneumatics.isJacks());
             SmartDashboard.putBoolean("Shooting Mode", Init.shootingMode.isRunning());
             SmartDashboard.putBoolean("Camera Running",false);
-            SmartDashboard.putDouble("Distance", 0);
-            SmartDashboard.putDouble("Offset", 0);
-            SmartDashboard.putDouble("Range-", 0);
-            SmartDashboard.putDouble("Range+", 3600);
-            SmartDashboard.putInt("First Delay",4);
-            SmartDashboard.putInt("Second Delay",6);
+            SmartDashboard.putNumber("Distance", 0);
+            SmartDashboard.putNumber("Offset", 0);
+            SmartDashboard.putNumber("Range-", 0);
+            SmartDashboard.putNumber("Range+", 3600);
+            SmartDashboard.putNumber("First Delay",4);
+            SmartDashboard.putNumber("Second Delay",6);
             //Intialize Single calls here, useful for PID data
             /*if (TURN_PID_TUNING) {
                 SmartDashboard.putData(CommandBase.drivebase);
@@ -52,8 +52,8 @@ public class SpectrumDashboard {
 
             if ((Timer.getFPGATimestamp() - shortOldTime) > SHORT_DELAY) {
                 //All Dashboard commands that should be updated after the quick SHORT_DELAY
-                SmartDashboard.putDouble("Ball Count", CommandBase.loader.getBallCount());
-                SmartDashboard.putDouble("RPM DIAL", OI.panel.getRPMAxis());
+                SmartDashboard.putNumber("Ball Count", CommandBase.loader.getBallCount());
+                SmartDashboard.putNumber("RPM DIAL", OI.panel.getRPMAxis());
                 SmartDashboard.putBoolean("FULL PRESSURE", CommandBase.pneumatics.isMaxPSI());
                 SmartDashboard.putBoolean("Dial Sp. Ctrl.", Init.panel_speedControl.isRunning());
                 SmartDashboard.putBoolean("At Speed", CommandBase.shooter.inRange());
